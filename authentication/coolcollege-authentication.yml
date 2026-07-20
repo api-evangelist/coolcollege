@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/coolcollege-openapi-original.json
+docs: https://open.coolcollege.cn/
+summary:
+  types: [signature, token]
+  api_key_in: [query]
+  oauth2_flows: []
+note: >-
+  The 酷学院 (Cool College) Open API uses an HMAC-signature credential exchange rather than
+  OAuth2. The OpenAPI declares no components.securitySchemes; the model below is captured
+  from the get_access_token operation and its parameter descriptions.
+schemes:
+  - name: hmac-signature-exchange
+    type: signature
+    exchange_operation: 'openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/get_access_token'
+    credentials:
+      - name: api_key
+        in: query
+        description: apiKey issued to the enterprise in the open platform console.
+      - name: api_secret
+        in: query
+        description: apiSecret (signing key).
+      - name: timestamp
+        in: query
+        description: 13-digit millisecond timestamp.
+      - name: signature
+        in: query
+        algorithm: HmacSHA256
+        description: >-
+          HmacSHA256 over the string (timestamp + "\n" + apiKey) keyed by apiSecret, then
+          URL-encoded before being appended to the request URL.
+    returns:
+      token: access_token
+      note: >-
+        get_access_token returns an access_token used to authorize subsequent API calls. The
+        spec does not declare how the access_token is transmitted on downstream requests;
+        consult https://open.coolcollege.cn/ for the header/param binding.
+    tenant_scope: 'Every operation is scoped to a tenant via the {enterprise-id} path parameter.'
