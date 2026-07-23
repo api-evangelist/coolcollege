@@ -1,0 +1,2302 @@
+openapi: 3.0.1
+info:
+  title: 酷学院 REST 学习 API
+  description: 欢迎使用酷学院开放平台Open API 服务
+  contact:
+    email: service@coolcollege.cn
+  version: v2
+  x-logo:
+    url: https://oss.coolcollege.cn/1553567081676c%402x.png
+    backgroundColor: '#9145e6'
+servers:
+- url: https://openapi.coolcollege.cn/api/v2
+tags:
+- name: 学习
+  description: '* 访问学习相关的操作以及数据
+
+    * ```{enterprise-id}```可在系统内获取
+
+    * 学习的```{plan-id}```可以通过获取学习任务列表的API得到
+
+    '
+paths:
+  /{enterprise-id}/plans:
+    get:
+      tags:
+      - 学习
+      summary: 获取学习任务列表
+      description: 获取学习任务列表信息，包含任务的plan id和对应的名称
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: begin_time
+        in: query
+        description: 开始时间
+        required: false
+        style: form
+        explode: true
+        example: '2020-08-15'
+        schema:
+          type: string
+      - name: end_time
+        in: query
+        description: 结束时间
+        required: false
+        style: form
+        explode: true
+        example: '2020-08-18'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 任务总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      plans:
+                        type: array
+                        description: 任务列表
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: 学习任务的id
+                              example: '1790288206508462080'
+                            name:
+                              type: string
+                              description: 学习任务的名称，用户自定义
+                              example: 学完这个瘦三斤
+                            begin_time:
+                              type: timestamp
+                              description: 学习任务期限开始时间（13位时间戳）
+                              example: 1584857523000
+                            end_time:
+                              type: timestamp
+                              description: 学习任务期限结束时间（13位时间戳）
+                              example: 1584857523000
+                            supervisor_id_list:
+                              type: array
+                              description: 监督人ID，数组形式
+                              items:
+                                type: string
+                                description: 监督人ID
+                                example: '1789888713963212800'
+  /{enterprise-id}/plans/{plan-id}:
+    get:
+      tags:
+      - 学习
+      summary: 获取学习任务状态信息
+      description: 获取学习任务的监控状态信息
+      parameters:
+      - name: passing_status
+        in: query
+        description: 提供结果过滤的参数，过滤条件为是否通过相关
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - passed
+          - failed
+          - all
+      - name: plan_status
+        in: query
+        description: 任务状态，通过状态可以筛选任务分类
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - all
+          - ongoing
+          - completed
+          - overdue
+      - name: search_name
+        in: query
+        description: 通过人员姓名筛选任务结果
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      creator_name:
+                        type: string
+                        description: 任务的创建人姓名
+                        example: 张三
+                      total:
+                        type: number
+                        description: 参加任务的总人数
+                        example: 37
+                      completed:
+                        type: number
+                        description: 完成任务的人数
+                        example: 24
+                      ongoing:
+                        type: number
+                        description: 正在进行任务的人数
+                        example: 13
+                      overdue:
+                        type: number
+                        description: 逾期的任务的人数
+                        example: 0
+                      monitoring_data:
+                        type: object
+                        description: 监控数据的具体内容
+                        properties:
+                          has_next_page:
+                            type: string
+                            description: 是否有下一页，类型为string，值为true或false
+                            enum:
+                            - 'true'
+                            - 'false'
+                            example: 'true'
+                          data:
+                            type: array
+                            description: 监控按照学员为维度的数据，数组形式
+                            items:
+                              type: object
+                              properties:
+                                user_name:
+                                  type: string
+                                  description: 学员名字
+                                  example: Samus Aran
+                                user_id:
+                                  type: string
+                                  description: 学员的id，也是用户id
+                                  example: '1789931551983800320'
+                                job_number:
+                                  type: string
+                                  description: 工号
+                                  example: wwwww
+                                plan_status:
+                                  type: string
+                                  description: 当前学员的任务学习状态
+                                  enum:
+                                  - ongoing
+                                  - completed
+                                  - overdue
+                                  example: completed
+                                plan_status_name:
+                                  type: string
+                                  description: 当前学员的任务学习状态，中文名称，意义与task_status一致
+                                  enum:
+                                  - 进行中
+                                  - 已完成
+                                  - 逾期
+                                  example: 已完成
+                                passing_status:
+                                  type: string
+                                  description: 通过状态，是否通过
+                                  enum:
+                                  - passed
+                                  - failed
+                                  example: passed
+                                passing_status_name:
+                                  type: string
+                                  description: 通过状态，中文名称，意义与passing_status一致
+                                  enum:
+                                  - 合格
+                                  - 不合格
+                                  example: 合格
+                                department_names:
+                                  type: array
+                                  description: 当前学员所在部门的名称
+                                  items:
+                                    type: string
+                                    description: 所属部门，一个人可以有多个部门
+                                    example: 保卫科
+                                position_names:
+                                  type: array
+                                  description: 当前学员所在岗位的名称
+                                  items:
+                                    type: string
+                                    description: 所属岗位，一个人可以有多个岗位
+                                    example: 研发部
+                                progress:
+                                  type: number
+                                  description: 总培训任务进度, 100表示100%
+                                  example: 100
+                                study_progress:
+                                  type: number
+                                  description: 学习部分的进度, 100表示100%
+                                  example: 100
+                                exam_passed:
+                                  type: number
+                                  description: 及格的场次
+                                  example: 1
+                                credits:
+                                  type: string
+                                  description: 学分
+                                  example: '22'
+                                certificate_name:
+                                  type: string
+                                  description: 证书名称
+                                  example: 工程师认证
+                                study_duration:
+                                  type: string
+                                  description: 学习时长
+                                  example: 00:30:00
+                                offline_train_duration:
+                                  type: string
+                                  description: 线下培训时长
+                                  example: 00:27:00
+                                exam_duration:
+                                  type: string
+                                  description: 考试时长
+                                  example: 00:30:00
+                                stage_data:
+                                  type: array
+                                  description: 分阶段详细进度内容
+                                  items:
+                                    type: object
+                                    description: 每一个阶段的数据
+                                    properties:
+                                      stage_seq_number:
+                                        type: number
+                                        description: 阶段顺序号，例如1表示阶段1
+                                        example: 1
+                                      stage_name:
+                                        type: string
+                                        description: 用户设置的阶段名称
+                                        example: 阶段一
+                                      stage_progress:
+                                        type: number
+                                        description: 阶段完成的进度, 100代表100%
+                                        example: 100
+                                      elements:
+                                        type: array
+                                        description: 阶段内的组合元素的数据
+                                        items:
+                                          type: object
+                                          properties:
+                                            title:
+                                              type: string
+                                              description: 阶段元素的名称
+                                              example: 20天java从入门到脊柱侧弯
+                                            is_exam:
+                                              type: string
+                                              description: 是否是考试元素
+                                              enum:
+                                              - 'true'
+                                              - 'false'
+                                              example: 'true'
+                                            exam_passing_status:
+                                              type: string
+                                              description: 若是考试元素，则此字段有值
+                                              enum:
+                                              - ''
+                                              - passed
+                                              - failed
+                                              example: passed
+                                            element_progress:
+                                              type: number
+                                              description: 当前元素的完成进度, 100表示100%
+                                              example: 100
+                                            score:
+                                              type: number
+                                              description: 得分
+                                              example: 100
+                                            content_type:
+                                              type: string
+                                              description: 资源类型
+                                              example: course
+                                              enum:
+                                              - course
+                                              - resource
+                                              - local_upload
+                                              - url
+                                              - ding
+                                              - exam
+                                              - laotoja
+                                              - qualification
+                                              - questionnaire
+                                              - operation
+                                              - evaluation
+                                              - 'null'
+                                            content_type_name:
+                                              type: string
+                                              description: 资源类型名称
+                                              example: 课程
+                                              enum:
+                                              - 课程
+                                              - 课件
+                                              - 本地上传
+                                              - 图文课
+                                              - 钉盘
+                                              - 考试
+                                              - 线下培训
+                                              - 认证
+                                              - 问卷
+                                              - 实操
+                                              - 测评
+                                              - 未知
+                                            id:
+                                              type: string
+                                              description: 资源id
+                                              example: '1794902443897786368'
+                      supervisor_id_list:
+                        type: array
+                        description: 监督人ID，数组形式
+                        items:
+                          type: string
+                          description: 监督人ID
+                          example: '1789888713963212800'
+  /{enterprise-id}/study_project_list:
+    get:
+      tags:
+      - 学习
+      summary: 获取学习项目信息
+      description: 获取学习项目信息
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: start_time
+        in: query
+        description: yyyy-mm-dd格式化的日期
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: end_time
+        in: query
+        description: yyyy-mm-dd格式化的日期
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: keyword
+        in: query
+        description: 根据学习项目名称查询
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 学习项目总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      list:
+                        type: array
+                        description: 学习项目信息
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: 学习项目id
+                              example: 6cfb8bd149d048afb43eb6bf39009783
+                            title:
+                              type: string
+                              description: 学习项目名称
+                              example: 学习项目
+                            create_time:
+                              type: number
+                              description: 创建时间
+                              example: 1617262514000
+                            is_free:
+                              type: boolean
+                              description: true
+                            classify_name:
+                              type: string
+                              description: 资源分类
+                              example: 经验分享
+                            cover:
+                              type: string
+                              description: 学习项目封面
+                              example: https://oss.coolcollege.cn/1800048808671973376.png
+                            need_enroll:
+                              type: boolean
+                              description: 是否需要报名
+                              example: false
+                            official_price:
+                              type: number
+                              description: 市场价
+                              example: 100
+                            preferential_price:
+                              type: number
+                              description: 优惠价
+                              example: 10
+                            lecturer_name:
+                              type: string
+                              description: 讲师名称
+                              example: 崔建中（示例）
+                            tags:
+                              type: array
+                              description: '标签 '
+                              items:
+                                type: array
+                                description: 标签名称
+                                example: 管理岗
+  /{enterprise-id}/users/{user-id}/score:
+    get:
+      tags:
+      - 学习
+      summary: 查询用户的学分
+      description: 查询某个用户某年的学分之和
+      parameters:
+      - name: year
+        in: query
+        description: 年份
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total_score:
+                        type: string
+                        description: 总学分
+                        example: '12'
+  /{enterprise-id}/operations/{approval-id}/approval:
+    get:
+      tags:
+      - 学习
+      summary: 查询用户的实操
+      description: 查询某个用户实操详情
+      parameters:
+      - name: submit_user_id
+        in: query
+        description: 提交人id
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      approval_user:
+                        type: string
+                        description: 实操提交人姓名
+                        example: 张三
+                      score:
+                        type: string
+                        description: 实操评分
+                        example: '53.0'
+                      submit_time:
+                        type: timestamp
+                        description: 提交时间（13位时间戳）
+                        example: 1619444902000
+                      suggest:
+                        type: string
+                        description: 实操评审内容
+                        example: 实操做的非常棒
+                      title:
+                        type: string
+                        description: 实操标题
+                        example: 实操演练
+                      content:
+                        type: string
+                        description: 作业要求
+                        example: 实操的要求说明
+                      operation_source:
+                        type: string
+                        description: 实操来源
+                        example: study 学习任务
+                      steps:
+                        type: array
+                        description: 实操阶段内容
+                        items:
+                          type: object
+                          properties:
+                            step:
+                              type: string
+                              description: 实操阶段
+                              example: 1阶段
+                            content:
+                              type: string
+                              description: 实操提交内容
+                              example: 学员实操内容
+  /{enterprise-id}/archives:
+    get:
+      tags:
+      - 学习
+      summary: 获取员工档案信息
+      description: 获取员工档案信息
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: start_time
+        in: query
+        description: yyyy-mm-dd格式化的日期
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: end_time
+        in: query
+        description: yyyy-mm-dd格式化的日期
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: job_status
+        in: query
+        description: 人员在职状态
+        schema:
+          type: string
+          enum:
+          - leave
+          - on_job
+      - name: search_name
+        in: query
+        description: 人员姓名
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 任务总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      users:
+                        type: array
+                        description: 用户信息
+                        items:
+                          type: object
+                          properties:
+                            user_id:
+                              type: string
+                              description: 用户id
+                              example: '1790288206508462080'
+                            jobnumber:
+                              type: string
+                              description: 工号
+                              example: '888888'
+                            user_name:
+                              type: string
+                              description: 用户名
+                              example: 张三
+                            position_names:
+                              type: array
+                              description: 岗位
+                            completed_rate:
+                              type: string
+                              description: 完成率
+                              example: 10%
+                            overdue_rate:
+                              type: string
+                              description: 逾期率
+                              example: 10%
+                            credits:
+                              type: number
+                              description: 已获得学分
+                              example: 10
+                            certificate_count:
+                              type: number
+                              description: 已获得证书
+                              example: 97
+                            new_employee_ongoing_count:
+                              type: number
+                              description: 新员工任务进行中个数
+                              example: 10
+                            new_employee_completed_count:
+                              type: number
+                              description: 新员工任务已完成个数
+                              example: 10
+                            new_employee_overdue_count:
+                              type: number
+                              description: 新员工任务逾期个数
+                              example: 12
+                            study_ongoing_count:
+                              type: number
+                              description: 学习任务进行中个数
+                              example: 1
+                            study_completed_count:
+                              type: number
+                              description: 学习任务已完成个数
+                              example: 1
+                            study_overdue_count:
+                              type: number
+                              description: 学习任务逾期个数
+                              example: 12
+                            exam_un_join_count:
+                              type: number
+                              description: 考试未考个数
+                              example: 12
+                            exam_passed_count:
+                              type: number
+                              description: 考试合格个数
+                              example: 1
+                            exam_failed_count:
+                              type: number
+                              description: 考试不合格个数
+                              example: 12
+                            exam_missed_count:
+                              type: number
+                              description: 考试缺考个数
+                              example: 12
+  /{enterprise-id}/get_userId_appId_list/query:
+    post:
+      tags:
+      - 学习
+      summary: 根据酷学院用户id查询app用户id
+      description: 根据酷学院用户id查询app用户id
+      requestBody:
+        description: 请求消息体
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetApiUserIdReqBody'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      user_id_app_user_id_map:
+                        type: map
+                        description: 酷学院用户id和钉钉用户id的映射
+  /{enterprise-id}/get_appId_userId_list/query:
+    post:
+      tags:
+      - 学习
+      summary: 根据app用户id查询酷学院用户id
+      description: 根据app用户id查询酷学院用户id
+      requestBody:
+        description: 请求消息体
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetAppIdReqBody'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      app_user_id_user_id_map:
+                        type: map
+                        description: 钉钉/OA用户id和酷学院用户id和的映射
+  /{enterprise-id}/users:
+    get:
+      tags:
+      - 学习
+      summary: 根据用户名搜索用户
+      description: 根据用户名搜索用户
+      parameters:
+      - name: name
+        in: query
+        description: 用户名
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      users:
+                        type: array
+                        description: 用户列表
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: 用户id
+                              example: '11111'
+                            name:
+                              type: string
+                              description: 用户名
+                              example: 张三
+  /{enterprise-id}/new_exams:
+    get:
+      tags:
+      - 学习
+      summary: 获取考试任务列表(新)
+      description: 获取考试任务列表信息
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: Number
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: Number
+      - name: exam_type
+        in: query
+        description: 任务类型（默认total(全部), published(已发布), draft(草稿)）
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - total
+          - published
+          - draft
+      - name: exam_title
+        in: query
+        description: 考试任务名称/创建人
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: match
+        in: query
+        description: '任务名称是否精准匹配 默认true(精准匹配),false(模糊匹配) '
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      - name: begin_time
+        in: query
+        description: 考试任务创建开始时间
+        required: false
+        style: form
+        explode: true
+        example: '1676455679000'
+        schema:
+          type: Number
+      - name: end_time
+        in: query
+        description: 考试任务创建结束时间
+        required: false
+        style: form
+        explode: true
+        example: '1676455679000'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 任务总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      exams:
+                        type: array
+                        description: 任务列表
+                        items:
+                          type: object
+                          properties:
+                            exam_id:
+                              type: string
+                              description: '考试任务id  '
+                              example: '1790288206508462080'
+                            exam_title:
+                              type: string
+                              description: 考试任务名
+                              example: 酷学院考试系统
+                            status:
+                              type: string
+                              description: 考试状态 published(已发布), draft(草稿)
+                              example: published
+                            answer_rule:
+                              type: string
+                              description: 作答规则 custom(自定义),stopWhenPassed(及格后终止考试),unlimited(不限次数)
+                              example: custom
+                            exam_count:
+                              type: number
+                              description: 考试次数；如果answer_rule=custom 考试次数>0；如果answer_rule=stopWhenPassed/unlimited 考试次数=0
+                              example: 0
+                            total_user_count:
+                              type: number
+                              description: 参与考试人数
+                              example: 100
+                            passed_user_count:
+                              type: number
+                              description: 及格人数
+                              example: 97
+                            failed_user_count:
+                              type: number
+                              description: 不及格人数
+                              example: 2
+                            un_join_user_count:
+                              type: number
+                              description: 缺考人数
+                              example: 1
+                            mark_pending_count:
+                              type: number
+                              description: 待阅卷人数
+                              example: 2
+                            creator_name:
+                              type: string
+                              description: 创建人名字
+                              example: 张三
+                            create_time:
+                              type: string
+                              description: 创建时间（13位时间戳）
+                              example: '1584857523000'
+  /{enterprise-id}/new_exams/{exam-id}:
+    get:
+      tags:
+      - 学习
+      summary: 获取考试人员信息列表(新)
+      description: 获取考试人员信息列表
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: Number
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: Number
+      - name: exam_status
+        in: query
+        description: 学员考试状态 all/全部, absence/未考，passed/及格，failed/不及格
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - all
+          - absence
+          - passed
+          - failed
+      - name: search_name
+        in: query
+        description: 考试人员名称
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: dept_id
+        in: query
+        description: 部门编号
+        required: false
+        style: form
+        explode: true
+        example: 1
+        schema:
+          type: Number
+      - name: post_id
+        in: query
+        description: 岗位编号
+        required: false
+        style: form
+        explode: true
+        example: 1
+        schema:
+          type: Number
+      - name: user_ids
+        in: query
+        description: 用户id集合
+        required: false
+        style: form
+        explode: true
+        example: 1826426202886377472,1826444321675677696
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total_count:
+                        type: number
+                        description: 参加任务的总人数
+                        example: 37
+                      pass_count:
+                        type: number
+                        description: 及格的人数
+                        example: 24
+                      fail_count:
+                        type: number
+                        description: 未及格的人数
+                        example: 13
+                      un_join_count:
+                        type: number
+                        description: 未参加的人数
+                        example: 0
+                      mark_pending_count:
+                        type: number
+                        description: 待阅卷人数
+                        example: 0
+                      monitoring_data:
+                        type: object
+                        description: 学员数据的具体内容
+                        properties:
+                          has_next_page:
+                            type: string
+                            description: 是否有下一页，类型为string，值为true或false
+                            enum:
+                            - 'true'
+                            - 'false'
+                            example: 'true'
+                          total:
+                            type: number
+                            description: 总数
+                          exam_users:
+                            type: array
+                            description: 监控按照学员为维度的数据，数组形式
+                            items:
+                              type: object
+                              properties:
+                                user_name:
+                                  type: string
+                                  description: 学员名字
+                                  example: Samus Aran
+                                user_id:
+                                  type: string
+                                  description: 学员的id，也是用户id
+                                  example: '1789931551983800320'
+                                jobnumber:
+                                  type: string
+                                  description: 工号
+                                  example: '12345678'
+                                task_id:
+                                  type: string
+                                  description: 考试任务编号
+                                  example: '1789931551983800320'
+                                exam_status:
+                                  type: string
+                                  description: 当前学员的考试状态 passed/及格，failed/不及格，waitting/未考，inProgress/考试中，pending/待阅卷
+                                  enum:
+                                  - passed
+                                  - failed
+                                  - waitting
+                                  - pending
+                                  - inProgress
+                                  example: passed
+                                exam_status_name:
+                                  type: string
+                                  description: 当前学员的考试状态，中文名称，意义与exam_status一致
+                                  enum:
+                                  - 合格
+                                  - 不合格
+                                  - 未参加
+                                  - 待阅卷
+                                  - 考试中
+                                  example: 及格
+                                department_names:
+                                  type: array
+                                  description: 当前学员所在部门的名称
+                                  items:
+                                    type: string
+                                    description: 所属部门，一个人可以有多个部门
+                                    example: 保卫科
+                                position_names:
+                                  type: array
+                                  description: 当前学员所在岗位的名称
+                                  items:
+                                    type: string
+                                    description: 所属岗位, 一个人可以有多个岗位
+                                    example: 开发
+                                exam_count:
+                                  type: number
+                                  description: 已参加的考试场次
+                                  example: 1
+                                exam_score:
+                                  type: number
+                                  description: 学员考试得分
+                                  example: 23.4
+                                start_time:
+                                  type: string
+                                  description: 考试开始时间
+                                  example: '1676455679000'
+                                end_time:
+                                  type: string
+                                  description: 考试结束时间
+                                  example: '1676455679000'
+                                creator_name:
+                                  type: string
+                                  description: 指派人名称
+                                  example: 阿Q
+  /{enterprise-id}/new_exams/{exam-id}/change_user:
+    post:
+      tags:
+      - 学习
+      summary: 考试任务变更人员（新）
+      description: 考试任务变更人员
+      requestBody:
+        description: 请求消息体
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExamChangeUserReqBody'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data: {}
+  /{enterprise-id}/exams:
+    get:
+      tags:
+      - 学习
+      summary: 获取考试任务列表(即将废弃)
+      description: 获取考试任务列表信息
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: exam_type
+        in: query
+        description: 任务类型（total, un_start, on_going, end）
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - total
+          - un_start
+          - on_going
+          - end
+      - name: exam_title
+        in: query
+        description: 任务名称
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: begin_time
+        in: query
+        description: 开始时间
+        required: false
+        style: form
+        explode: true
+        example: '2020-08-15'
+        schema:
+          type: string
+      - name: end_time
+        in: query
+        description: 结束时间
+        required: false
+        style: form
+        explode: true
+        example: '2020-08-18'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 任务总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      exams:
+                        type: array
+                        description: 任务列表
+                        items:
+                          type: object
+                          properties:
+                            exam_id:
+                              type: string
+                              description: '考试任务id  '
+                              example: '1790288206508462080'
+                            exam_title:
+                              type: string
+                              description: 考试任务名
+                              example: 学完这个瘦三斤
+                            total_user_count:
+                              type: number
+                              description: 应考人数
+                              example: 100
+                            passed_user_count:
+                              type: number
+                              description: 及格人数
+                              example: 1
+                            failed_user_count:
+                              type: number
+                              description: 未及格人数
+                              example: 1
+                            un_join_user_count:
+                              type: number
+                              description: 未考人数
+                              example: 1
+                            mark_pending_count:
+                              type: number
+                              description: 待阅卷人数
+                              example: 97
+                            creator_name:
+                              type: string
+                              description: 创建人名字
+                              example: 张三
+                            create_time:
+                              type: string
+                              description: 创建时间（13位时间戳）
+                              example: '1584857523000'
+                            begin_time:
+                              type: string
+                              description: 考试期限开始时间（13位时间戳）
+                              example: '1584857523000'
+                            end_time:
+                              type: string
+                              description: 考试期限结束时间（13位时间戳）
+                              example: '1584857523000'
+                            supervisor_id_list:
+                              type: array
+                              description: 监督人ID，数组形式
+                              items:
+                                type: string
+                                description: 监督人ID
+                                example: '1789888713963212800'
+  /{enterprise-id}/exams/{exam-id}:
+    get:
+      tags:
+      - 学习
+      summary: 获取考试任务监控信息(即将废弃)
+      operationId: getExamMonitor
+      parameters:
+      - name: exam_status
+        in: query
+        description: 人员考试状态
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - all
+          - passed
+          - failed
+          - waitting
+      - name: search_name
+        in: query
+        description: 通过人员姓名筛选任务结果
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      creator_name:
+                        type: string
+                        description: 任务的创建人姓名
+                        example: 张三
+                      total_count:
+                        type: number
+                        description: 参加任务的总人数
+                        example: 37
+                      pass_count:
+                        type: number
+                        description: 及格的人数
+                        example: 24
+                      fail_count:
+                        type: number
+                        description: 未及格的人数
+                        example: 13
+                      un_join_count:
+                        type: number
+                        description: 未参加的人数
+                        example: 0
+                      monitoring_data:
+                        type: object
+                        description: 监控数据的具体内容
+                        properties:
+                          has_next_page:
+                            type: string
+                            description: 是否有下一页，类型为string，值为true或false
+                            enum:
+                            - 'true'
+                            - 'false'
+                            example: 'true'
+                          exam_users:
+                            type: array
+                            description: 监控按照学员为维度的数据，数组形式
+                            items:
+                              type: object
+                              properties:
+                                user_name:
+                                  type: string
+                                  description: 学员名字
+                                  example: Samus Aran
+                                user_id:
+                                  type: string
+                                  description: 学员的id，也是用户id
+                                  example: '1789931551983800320'
+                                jobnumber:
+                                  type: string
+                                  description: 工号
+                                  example: wwwww
+                                exam_status:
+                                  type: string
+                                  description: 当前学员的考试状态
+                                  enum:
+                                  - passed
+                                  - failed
+                                  - waitting
+                                  example: passed
+                                exam_status_name:
+                                  type: string
+                                  description: 当前学员的考试状态，中文名称，意义与exam_status一致
+                                  enum:
+                                  - 合格
+                                  - 不合格
+                                  - 未参加
+                                  example: 及格
+                                department_names:
+                                  type: array
+                                  description: 当前学员所在部门的名称
+                                  items:
+                                    type: string
+                                    description: 所属部门，一个人可以有多个部门
+                                    example: 保卫科
+                                position_names:
+                                  type: array
+                                  description: 当前学员所在岗位的名称
+                                  items:
+                                    type: string
+                                    description: 所属岗位, 一个人可以有多个岗位
+                                    example: 开发
+                                exam_count:
+                                  type: number
+                                  description: 已参加的考试场次
+                                  example: 1
+                                exam_score:
+                                  type: number
+                                  description: 学员考试得分
+                                  example: 23.4
+                          total:
+                            type: number
+                            description: 总数
+                      supervisor_id_list:
+                        type: array
+                        description: 监督人ID，数组形式
+                        items:
+                          type: string
+                          description: 监督人ID
+                          example: '1789888713963212800'
+  /{enterprise-id}/lecturers:
+    get:
+      tags:
+      - 学习
+      summary: 获取讲师信息
+      description: 获取讲师信息
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: lecturer_name
+        in: query
+        description: 讲师姓名
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 任务总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      lecturer_list:
+                        type: array
+                        description: 讲师信息
+                        items:
+                          type: object
+                          properties:
+                            lecturer_id:
+                              type: string
+                              description: 讲师id
+                              example: '1790288206508462080'
+                            lecturer_name:
+                              type: string
+                              description: 讲师姓名
+                              example: 张三
+                            level_name:
+                              type: string
+                              description: 讲师等级名称
+                            level_id:
+                              type: string
+                              description: 讲师等级id
+                              example: 14e42991a0684d2ea71ebbff5566d7aa
+                            course_count:
+                              type: number
+                              description: 已授课程
+                              example: '12'
+                            create_user_id:
+                              type: string
+                              description: 创建人id
+                              example: 1121222
+                            create_user_name:
+                              type: string
+                              description: 创建人姓名
+                              example: 李四
+                            create_time:
+                              type: number
+                              description: 创建时间（时间戳毫秒）
+                              example: '1585013500000'
+                            status:
+                              type: string
+                              description: 讲师状态（on, off）
+                              example: 'on'
+  /{enterprise-id}/get_certificate_list:
+    get:
+      tags:
+      - 学习
+      summary: 获取证书列表
+      description: 获取企业证书列表
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: keyword
+        in: query
+        description: 证书名称搜索
+        required: false
+        style: form
+        explode: true
+        example: ''
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: 证书状态
+        required: false
+        style: form
+        explode: true
+        example: 1：启用,0：停用
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      list:
+                        type: array
+                        description: 证书列表
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              description: 证书id
+                              example: '1790288206508462080'
+                            certificate_name:
+                              type: string
+                              description: 证书名称
+                              example: 防疫健康管理师认证
+                            certificate_code:
+                              type: string
+                              description: 证书编号
+                              example: '21121231'
+                            summary:
+                              type: string
+                              description: 证书说明
+                              example: 兹证明通过认证考核，特颁发此证
+                            create_time:
+                              type: timestamp
+                              description: 创建时间（13位时间戳）
+                              example: '1603366471000'
+                            status:
+                              type: number
+                              description: 证书状态 0:停用,1:启用
+                              example: '1'
+                            overdue_date:
+                              type: number
+                              description: 证书有效期（月） 0：代表永久有效
+                              example: '8'
+  /{enterprise-id}/get_certificate_rank:
+    get:
+      tags:
+      - 学习
+      summary: 获取证书排行榜
+      description: 获取企业证书排行榜
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      list:
+                        type: array
+                        description: 证书排行榜数据
+                        items:
+                          type: object
+                          properties:
+                            user_id:
+                              type: string
+                              description: 酷学院用户id
+                              example: '1790288206508462080'
+                            user_name:
+                              type: string
+                              description: 用户姓名
+                              example: 张三
+                            jobnumber:
+                              type: string
+                              description: 工号
+                              example: '888888'
+                            rank:
+                              type: number
+                              description: 排行
+                              example: 排行
+                            department_names:
+                              type: array
+                              description: '部门名称 '
+                              items:
+                                type: string
+                                description: 部门名称
+                                example: 技术研发部
+                            certificate_count:
+                              type: number
+                              description: 已获得证书个数
+                              example: '8'
+  /{enterprise-id}/users/{user-id}/certificate:
+    get:
+      tags:
+      - 学习
+      summary: 获取某人证书详情
+      description: 获取某人证书详情
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      list:
+                        type: array
+                        description: 证书详情数据
+                        items:
+                          type: object
+                          properties:
+                            certificate_id:
+                              type: string
+                              description: 证书id
+                              example: '1790288206508462080'
+                            certificate_name:
+                              type: string
+                              description: 证书名
+                              example: 高级厨师
+                            source:
+                              type: string
+                              description: 证书来源
+                              example: 高级厨师证书考试
+                            get_certificate_timestamp:
+                              type: number
+                              description: 获取证书时间
+                              example: '1597638247000'
+                            get_type:
+                              type: string
+                              enum:
+                              - 手动派发
+                              - 系统
+                              description: 颁发方式
+                              example: 系统
+                            overdue_date:
+                              type: number
+                              description: 逾期时间(月), 0 代表永久证书
+                              example: 0
+                            certificate_random_code:
+                              type: string
+                              description: 证书编码
+                              example: '56500'
+                            certificate_reason:
+                              type: string
+                              description: 颁发证书缘由
+                              example: 表现优秀，特颁此证
+                            image_url:
+                              type: string
+                              description: 证书图片
+                              example: http://oss.coolcollege.cn/user-resource/staging/certs/2112123156500b4e84252-d72d-4d81-8b51-98baea569d08.png
+  /{enterprise-id}/get_certificate_user_list:
+    get:
+      tags:
+      - 学习
+      summary: 获取企业用户证书列表
+      description: 获取企业用户证书列表
+      parameters:
+      - name: page_number
+        in: query
+        description: 分页的页码，取值为1，2，3...
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: page_size
+        in: query
+        description: 分页大小，表示每页返回的记录数量
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: begin_time
+        in: query
+        description: 开始时间
+        required: false
+        style: form
+        explode: true
+        example: '2021-06-05'
+        schema:
+          type: string
+      - name: end_time
+        in: query
+        description: 结束时间
+        required: false
+        style: form
+        explode: true
+        example: '2021-06-07'
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      total:
+                        type: number
+                        description: 总数
+                        example: 100
+                      has_next_page:
+                        type: string
+                        description: 是否还有下一页，true或者false
+                        enum:
+                        - 'true'
+                        - 'false'
+                      list:
+                        type: array
+                        description: 企业用户证书列表
+                        items:
+                          type: object
+                          properties:
+                            user_id:
+                              type: string
+                              description: 用户id
+                              example: '1794892766317252608'
+                            certificate_id:
+                              type: string
+                              description: 证书id
+                              example: '1794932176505147392'
+                            certificate_name:
+                              type: string
+                              description: 证书名
+                              example: 高级厨师
+                            certificate_type:
+                              type: string
+                              enum:
+                              - 手动派发
+                              - 系统
+                              description: 颁发方式
+                              example: 系统
+                            overdue_date:
+                              type: number
+                              description: 过期时间
+                              example: '1597638247000'
+                            source:
+                              type: string
+                              description: 证书来源
+                              example: 高级厨师证书考试
+                            create_time:
+                              type: number
+                              description: 获取证书时间
+                              example: 1597638247000
+                            image_url:
+                              type: string
+                              description: 证书图片链接
+                              example: http://oss.coolcollege.cn/user-resource/staging/certs/2112123156500b4e84252-d72d-4d81-8b51-98baea569d08.png
+  /{enterprise-id}/get_access_token:
+    get:
+      tags:
+      - 学习
+      summary: 获取访问接口所需的access_token
+      description: 获取访问接口所需的access_token
+      parameters:
+      - name: api_key
+        in: query
+        description: apiKey
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: api_secret
+        in: query
+        description: apiSecret
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: timestamp
+        in: query
+        description: 13位时间戳, 精确到毫秒
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: number
+      - name: signature
+        in: query
+        description: 以timestamp 和 ```\n``` 和 apiKey签名字符串，apiSecret为签名密钥，使用算法HmacSHA256计算的签名值。注意：计算出签名以后，需要进行urlencode，才能把签名参数拼接到url中
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: 业务code
+                    example: '0'
+                  message:
+                    type: string
+                    description: 错误信息
+                    example: success
+                  data:
+                    type: object
+                    description: 返回的数据
+                    properties:
+                      access_token:
+                        type: string
+                        description: 开放平台token
+                      begin_time:
+                        type: timestamp
+                        description: 开放平台token开始时间（10位时间戳）
+                      expires:
+                        type: string
+                        description: 有效期时长,单位是秒
+                        example: '14400'
+components:
+  schemas:
+    GetAppIdReqBody:
+      type: object
+      properties:
+        app_user_ids:
+          type: array
+          format: string
+      xml:
+        name: GetAppIdReqBody
+    ExamChangeUserReqBody:
+      type: object
+      properties:
+        type:
+          type: String
+          description: 操作类型 add 添加 update 更新 delete 删除
+          example: add
+        begin_time:
+          type: Number
+          description: 考试开始时间
+          example: 1676455679000
+        end_time:
+          type: Number
+          description: 考试结束时间
+          example: 1676455679000
+        exam_count:
+          type: Number
+          description: 考试次数，任务设定为自定义考试次数时该字段有意义
+          example: 3
+        user_ids:
+          type: Array
+          description: 用户编号集合
+          example:
+          - 1794890504450740200
+          - 1794890504450740200
+        post_ids:
+          type: Array
+          description: 岗位编号集合
+          example:
+          - 12
+          - 11
+        department_ids:
+          type: Array
+          description: 部门编号集合
+          example:
+          - 14
+          - 13
+        group_ids:
+          type: Array
+          description: 用户组编号集合
+          example:
+          - 1
+          - 2
+      xml:
+        name: ExamChangeUserReqBody
+    GetApiUserIdReqBody:
+      type: object
+      properties:
+        user_ids:
+          type: array
+          format: int64
+        app_type:
+          type: string
+          enum:
+          - e_app
+      xml:
+        name: GetApiUserIdReqBody
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+x-tagGroups:
+- name: Introduction
+  tags:
+  - 概述
+  - endpoint
+  - URL path
+  - HTTP status code 详解
+- name: Access
+  tags:
+  - 接入方式
+  - ApiKey
+- name: APIs
+  tags:
+  - 鉴权
+  - 学习
+  - 考试
+  - 学习项目
+  - 档案
+  - 讲师
+  - 用户
+  - 证书
+  - 学分
+  - 实操
+  - thirdoa
