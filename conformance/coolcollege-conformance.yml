@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/coolcollege-openapi-original.json
+standards:
+- id: oauth2
+  conforms: false
+  evidence: auth is a custom HmacSHA256 signature -> access_token exchange (get_access_token),
+    not OAuth2
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use the custom ApiResponse envelope (code/type/message), not application/problem+json
+- id: json:api
+  conforms: false
+- id: rest
+  conforms: true
+  evidence: resource-oriented REST over HTTPS, JSON payloads, OpenAPI 3.0.1 described
+- id: pagination
+  conforms: true
+  evidence: offset pagination via page_number/page_size query params across list operations
+- id: hmac-signature-auth
+  conforms: true
+  evidence: get_access_token requires HmacSHA256 signature over timestamp+apiKey keyed
+    by apiSecret

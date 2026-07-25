@@ -1,0 +1,17 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/coolcollege-openapi-original.json
+format: custom-envelope
+envelope:
+  schema: ApiResponse
+  fields:
+  - code
+  - type
+  - message
+  note: Non-RFC9457. Successful and error responses are wrapped in the ApiResponse
+    envelope (code/type/message). The spec documents few explicit 4xx/5xx responses;
+    consult https://open.coolcollege.cn/ for the full error/code reference.
+problems:
+- status: 405
+  description: Invalid input
+  source_operation: openapi/coolcollege-openapi-original.json#POST /{enterprise-id}/exams/{exam-id}

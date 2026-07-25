@@ -1,0 +1,18 @@
+{
+  "provider": "coolcollege",
+  "sources": [
+    "coolcollege-default-api-openapi.yml",
+    "coolcollege-pet-api-openapi.yml",
+    "coolcollege-thirdoa-api-openapi.yml"
+  ],
+  "outputs": [
+    "coolcollege-default-api-openapi.yml",
+    "coolcollege-pet-api-openapi.yml",
+    "coolcollege-thirdoa-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

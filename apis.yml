@@ -1,25 +1,136 @@
 aid: coolcollege
-name: coolcollege
-description: coolcollege is a company surfaced as a portfolio company of qiming and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+name: 酷学院 (Cool College)
+description: >-
+  酷学院 (Cool College) is an enterprise training and talent-development SaaS platform operated by
+  酷渲（北京）科技发展有限公司 (Cool Render (Beijing) Technology Co., Ltd.), founded in 2017 and acquired by
+  Beisen in 2025. It provides AI-assisted corporate e-learning — course libraries, learning tasks,
+  learning projects, exams, certificates, credits, and instructor management — with deep integration
+  into DingTalk, Feishu, and WeChat Work. Its Open API (v2) lets integrators sync organization data
+  (users, departments, positions) and read learning, exam, certificate, credit, and archive data for
+  an enterprise tenant, authenticated via an HMAC-SHA256 signature exchange that issues an access_token.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://oss.coolcollege.cn/1553567081676c%402x.png
 url: https://raw.githubusercontent.com/api-evangelist/coolcollege/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - qiming
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: live-open-api-harvested
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Corporate Training
+- E-Learning
+- Talent Development
+- Human Resources
+- SaaS
+- Learning Management
+- China
+apis:
+- aid: coolcollege:coolcollege-default-api
+  name: 酷学院 (Cool College) 学习 API
+  description: >-
+    * 访问学习相关的操作以及数据
+
+    * ```{enterprise-id}```可在系统内获取
+
+    * 学习的```{plan-id}```可以通过获取学习任务列表的API得到
+  humanURL: https://open.coolcollege.cn/
+  baseURL: https://openapi.coolcollege.cn/api/v2
+  tags:
+  - 学习
+  properties:
+  - type: OpenAPI
+    url: openapi/coolcollege-default-api-openapi.yml
+- aid: coolcollege:coolcollege-pet-api
+  name: 酷学院 (Cool College) pet API
+  description: Everything about your Pets
+  humanURL: https://open.coolcollege.cn/
+  baseURL: https://openapi.coolcollege.cn/api/v2
+  tags:
+  - pet
+  properties:
+  - type: OpenAPI
+    url: openapi/coolcollege-pet-api-openapi.yml
+- aid: coolcollege:coolcollege-thirdoa-api
+  name: 酷学院 (Cool College) thirdoa API
+  description: >-
+    * OA系统 人员/部门变动事件推送API
+
+    * 访问该目录下接口时header中需要携带参数 `access-token` 和 `enterprise-id`
+
+    * access-token 参数来自鉴权接口返回的token值
+  humanURL: https://open.coolcollege.cn/
+  baseURL: https://openapi.coolcollege.cn/api/v2
+  tags:
+  - thirdoa
+  properties:
+  - type: OpenAPI
+    url: openapi/coolcollege-thirdoa-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DeveloperPortal
+  url: https://open.coolcollege.cn/
+- type: APIReference
+  url: https://open.coolcollege.cn/
+- type: Documentation
+  url: https://help.coolcollege.cn/
+- type: Support
+  url: https://help.coolcollege.cn/
+- type: Blog
+  url: https://www.coolcollege.com/originalnews
+- type: SignUp
+  url: https://www.coolcollege.com/freeTrial.html
+- type: TermsOfService
+  url: https://www.coolcollege.com/service.html
+- type: PrivacyPolicy
+  url: https://www.coolcollege.com/wp-content/uploads/2025/04/酷学院平台隐私政策-2025.pdf
+- type: StatusPage
+  url: https://status.coolcollege.cn/
+- type: Authentication
+  url: authentication/coolcollege-authentication.yml
+- type: Conventions
+  url: conventions/coolcollege-conventions.yml
+- type: ErrorCatalog
+  url: errors/coolcollege-problem-types.yml
+- type: DataModel
+  url: data-model/coolcollege-data-model.yml
+- type: Conformance
+  url: conformance/coolcollege-conformance.yml
+- type: Lifecycle
+  url: lifecycle/coolcollege-lifecycle.yml
+- type: MCPServer
+  url: mcp/coolcollege-mcp.yml
+- type: LLMsTxt
+  url: llms/coolcollege-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/coolcollege-agentic-access.yml
+- type: DomainSecurity
+  url: security/coolcollege-domain-security.yml
 - type: Website
-  url: https://coolcollege.cn
+  url: https://www.coolcollege.com
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

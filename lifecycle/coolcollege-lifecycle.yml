@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/coolcollege-openapi-original.json
+versioning:
+  scheme: uri-path
+  current: v2
+  base_path: /api/v2
+status_page: https://status.coolcollege.cn/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No formal deprecation policy or RFC 8594 Sunset/Deprecation header support is published.
+    The provider does practice operation-level deprecation in-spec: two exam-list operations
+    are marked 即将废弃 ("about to be deprecated") and superseded by new_exams equivalents.
+deprecated_operations:
+  - 'openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/exams  (即将废弃 -> use /{enterprise-id}/new_exams)'
+  - 'openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/exams/{exam-id}  (即将废弃 -> use /{enterprise-id}/new_exams/{exam-id})'
+sla:
+  url: null

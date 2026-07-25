@@ -1,0 +1,24 @@
+# 酷学院 (Cool College) Open API
+
+> Cool College (酷学院, legal entity 酷渲（北京）科技发展有限公司 / Cool Render (Beijing) Technology Co., Ltd.) is an enterprise training and talent-development SaaS platform founded in 2017 and acquired by Beisen in 2025. The Open API (v2) lets integrators sync organization data (users, departments, positions) and read learning, exam, certificate, credit, and instructor data for an enterprise tenant. Authentication is an HMAC-SHA256 signature exchange that yields an access_token; every operation is scoped by an {enterprise-id} path parameter.
+
+## APIs
+- [Open API platform](https://open.coolcollege.cn/): Developer portal and API reference for the Cool College REST API v2.
+- Base URL: https://openapi.coolcollege.cn/api/v2
+
+## Specs
+- [OpenAPI 3.0.1 (harvested)](https://raw.githubusercontent.com/api-evangelist/coolcollege/refs/heads/main/openapi/coolcollege-openapi-original.json): 24 operations across authentication, users, departments/positions sync, learning tasks, learning projects, exams, certificates, credits, instructors, archives, and hands-on practice.
+
+## Artifacts
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/coolcollege/refs/heads/main/authentication/coolcollege-authentication.yml): HMAC-SHA256 signature -> access_token model.
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/coolcollege/refs/heads/main/conventions/coolcollege-conventions.yml): pagination, versioning, error envelope.
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/coolcollege/refs/heads/main/errors/coolcollege-problem-types.yml): ApiResponse envelope (code/type/message).
+- [Data model](https://raw.githubusercontent.com/api-evangelist/coolcollege/refs/heads/main/data-model/coolcollege-data-model.yml): enterprise/user/department/exam/certificate entity graph.
+- [MCP (candidate tools)](https://raw.githubusercontent.com/api-evangelist/coolcollege/refs/heads/main/mcp/coolcollege-mcp.yml)
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/coolcollege/refs/heads/main/lifecycle/coolcollege-lifecycle.yml)
+
+## Docs
+- [Help center](https://help.coolcollege.cn/)
+- [Product site](https://www.coolcollege.com/)
+- [Status page](https://status.coolcollege.cn/)
+- [Terms of service](https://www.coolcollege.com/service.html)

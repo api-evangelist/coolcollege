@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/coolcollege-openapi-original.json
+skills:
+  - file: coolcollege-authenticate-and-read-learning.md
+    name: Authenticate and read learning data
+    api: openapi/coolcollege-openapi-original.json
+    operations:
+      - "GET /{enterprise-id}/get_access_token"
+      - "GET /{enterprise-id}/plans"
+      - "GET /{enterprise-id}/new_exams"
+      - "GET /{enterprise-id}/get_certificate_list"
+  - file: coolcollege-sync-org-data.md
+    name: Sync organization data into Cool College
+    api: openapi/coolcollege-openapi-original.json
+    operations:
+      - "POST /event/dept"
+      - "POST /event/post"
+      - "POST /event/user"
+      - "POST /event/study_project_user"

@@ -1,0 +1,34 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/coolcollege-openapi-original.json
+authentication:
+  style: hmac-signature-exchange
+  detail: authentication/coolcollege-authentication.yml
+  tenant_param: '{enterprise-id} path parameter scopes every operation to one enterprise tenant'
+pagination:
+  style: offset
+  params:
+    page: page_number
+    size: page_size
+  applies_to: list operations (archives, exams, plans, certificates, lecturers, study projects, etc.)
+idempotency:
+  supported: false
+  note: No idempotency-key header or parameter is documented in the OpenAPI or on the open platform.
+error_envelope:
+  schema: ApiResponse
+  fields: [code, type, message]
+  format: custom-envelope (not RFC 9457 problem+json)
+  detail: errors/coolcollege-problem-types.yml
+versioning:
+  scheme: uri-path
+  current: v2
+  base_path: /api/v2
+rate_limit_signal:
+  documented: false
+time_filtering:
+  note: Many list endpoints accept begin_time/end_time or start_time/end_time query filters.
+cross_links:
+  authentication: authentication/coolcollege-authentication.yml
+  errors: errors/coolcollege-problem-types.yml
+  lifecycle: lifecycle/coolcollege-lifecycle.yml
+  data_model: data-model/coolcollege-data-model.yml

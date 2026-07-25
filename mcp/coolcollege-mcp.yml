@@ -1,0 +1,131 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/coolcollege-openapi-original.json
+note: Candidate tool list derived one-per-operation from the harvested OpenAPI. No
+  official hosted MCP server was found for 酷学院/Cool College as of the generated date.
+server:
+  name: coolcollege
+  transport: http
+  url: null
+tools:
+- name: post_event_dept
+  description: 部门信息同步
+  source_operation: openapi/coolcollege-openapi-original.json#POST /event/dept
+  tags:
+  - thirdoa
+- name: post_event_post
+  description: 岗位信息同步
+  source_operation: openapi/coolcollege-openapi-original.json#POST /event/post
+  tags:
+  - thirdoa
+- name: post_event_study_project_user
+  description: 学习项目报名人员同步
+  source_operation: openapi/coolcollege-openapi-original.json#POST /event/study_project_user
+  tags:
+  - thirdoa
+- name: post_event_user
+  description: 人员信息同步
+  source_operation: openapi/coolcollege-openapi-original.json#POST /event/user
+  tags:
+  - thirdoa
+- name: get_archives
+  description: 获取员工档案信息
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/archives
+  tags:
+  - 档案
+- name: get_exams
+  description: 获取考试任务列表(即将废弃)
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/exams
+  tags:
+  - 考试
+- name: get_exams_exam_id
+  description: 获取考试任务监控信息(即将废弃)
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/exams/{exam-id}
+  tags:
+  - 考试
+- name: get_get_access_token
+  description: 获取访问接口所需的access_token
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/get_access_token
+  tags:
+  - 鉴权
+- name: post_get_appid_userid_list_query
+  description: 根据app用户id查询酷学院用户id
+  source_operation: openapi/coolcollege-openapi-original.json#POST /{enterprise-id}/get_appId_userId_list/query
+  tags:
+  - 用户
+- name: get_get_certificate_list
+  description: 获取证书列表
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/get_certificate_list
+  tags:
+  - 证书
+- name: get_get_certificate_rank
+  description: 获取证书排行榜
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/get_certificate_rank
+  tags:
+  - 证书
+- name: get_get_certificate_user_list
+  description: 获取企业用户证书列表
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/get_certificate_user_list
+  tags:
+  - 证书
+- name: post_get_userid_appid_list_query
+  description: 根据酷学院用户id查询app用户id
+  source_operation: openapi/coolcollege-openapi-original.json#POST /{enterprise-id}/get_userId_appId_list/query
+  tags:
+  - 用户
+- name: get_lecturers
+  description: 获取讲师信息
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/lecturers
+  tags:
+  - 讲师
+- name: get_new_exams
+  description: 获取考试任务列表(新)
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/new_exams
+  tags:
+  - 考试
+- name: get_new_exams_exam_id
+  description: 获取考试人员信息列表(新)
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/new_exams/{exam-id}
+  tags:
+  - 考试
+- name: post_new_exams_exam_id_change_user
+  description: 考试任务变更人员（新）
+  source_operation: openapi/coolcollege-openapi-original.json#POST /{enterprise-id}/new_exams/{exam-id}/change_user
+  tags:
+  - 考试
+- name: get_operations_approval_id_approval
+  description: 查询用户的实操
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/operations/{approval-id}/approval
+  tags:
+  - 实操
+- name: get_plans
+  description: 获取学习任务列表
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/plans
+  tags:
+  - 学习
+- name: get_plans_plan_id
+  description: 获取学习任务状态信息
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/plans/{plan-id}
+  tags:
+  - 学习
+- name: get_study_project_list
+  description: 获取学习项目信息
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/study_project_list
+  tags:
+  - 学习项目
+- name: get_users
+  description: 根据用户名搜索用户
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/users
+  tags:
+  - 用户
+- name: get_users_user_id_certificate
+  description: 获取某人证书详情
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/users/{user-id}/certificate
+  tags:
+  - 证书
+- name: get_users_user_id_score
+  description: 查询用户的学分
+  source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/users/{user-id}/score
+  tags:
+  - 学分

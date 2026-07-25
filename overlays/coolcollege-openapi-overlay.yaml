@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for 酷学院 REST API
+  version: 1.0.0
+extends: openapi/coolcollege-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-notes: Harvested live from https://open.coolcollege.cn/openapi.json.
+      Leftover Swagger Petstore sample schemas/operations (Pet/Order/Category/Tag/addPet)
+      remain in the provider spec and should be removed by the provider.
+- target: $.servers
+  update:
+  - url: https://openapi.coolcollege.cn/api/v2
+    description: 'Production (corrected: provider spec listed a malformed second server
+      URL)'

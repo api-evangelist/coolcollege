@@ -1,0 +1,89 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/coolcollege-openapi-original.json
+entities:
+- name: Enterprise
+  id: enterprise-id
+  note: tenant root; every operation is scoped under /{enterprise-id}
+- name: User
+  schema: 人员信息
+  note: employee/learner record
+  id_prefix: null
+- name: Department
+  schema: 部门信息
+- name: Post
+  schema: 岗位信息
+  note: job position
+- name: Exam
+  note: exam task (考试)
+- name: LearningPlan
+  note: learning task/plan (学习任务)
+- name: StudyProject
+  note: learning project (学习项目)
+- name: Certificate
+  note: certificate (证书)
+- name: Lecturer
+  note: instructor (讲师)
+- name: Score
+  note: learning credits (学分)
+- name: Archive
+  note: employee training archive (档案)
+- name: Operation
+  note: hands-on practice / approval (实操)
+relationships:
+- from: Enterprise
+  type: has_many
+  to: User
+  via: enterprise-id
+- from: Enterprise
+  type: has_many
+  to: Department
+  via: enterprise-id
+- from: Enterprise
+  type: has_many
+  to: Post
+  via: enterprise-id
+- from: Enterprise
+  type: has_many
+  to: Exam
+  via: enterprise-id
+- from: Enterprise
+  type: has_many
+  to: LearningPlan
+  via: enterprise-id
+- from: Enterprise
+  type: has_many
+  to: StudyProject
+  via: enterprise-id
+- from: Enterprise
+  type: has_many
+  to: Certificate
+  via: enterprise-id
+- from: Enterprise
+  type: has_many
+  to: Lecturer
+  via: enterprise-id
+- from: User
+  type: belongs_to
+  to: Department
+  via: department_ids
+- from: User
+  type: belongs_to
+  to: Post
+  via: post_ids
+- from: User
+  type: has_many
+  to: Certificate
+  via: user-id
+- from: User
+  type: has_one
+  to: Score
+  via: user-id
+- from: Exam
+  type: has_many
+  to: User
+  via: exam-id (exam participants)
+- from: StudyProject
+  type: has_many
+  to: User
+  via: study_project_user sync
