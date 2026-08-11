@@ -87,6 +87,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/coolcollege-openapi-overlay.yaml
 - type: DeveloperPortal
   url: https://open.coolcollege.cn/
 - type: APIReference
