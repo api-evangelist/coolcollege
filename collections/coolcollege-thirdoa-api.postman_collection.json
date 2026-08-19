@@ -1,0 +1,355 @@
+{
+  "item": [
+    {
+      "id": "bf79745d-480c-4aa6-97b2-7f9ed609ffa0",
+      "name": "thirdoa",
+      "description": {
+        "content": "* OA系统 人员/部门变动事件推送API\n* 访问该目录下接口时header中需要携带参数 `access-token` 和 `enterprise-id`\n* access-token 参数来自鉴权接口返回的token值\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7f3ddb44-078c-4845-ae8c-e22de1e0dfdf",
+          "name": "部门信息同步",
+          "request": {
+            "name": "部门信息同步",
+            "description": {
+              "content": "部门信息同步",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event",
+                "dept"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"is_delete\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"create_time\": \"<long>\",\n      \"depart_order\": \"<integer>\",\n      \"last_update_time\": \"<long>\",\n      \"parent_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"is_delete\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"create_time\": \"<long>\",\n      \"depart_order\": \"<integer>\",\n      \"last_update_time\": \"<long>\",\n      \"parent_id\": \"<string>\"\n    }\n  ],\n  \"data_count\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8fade2d3-16bc-40ea-98ff-2836c7b2ea73",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    "dept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"is_delete\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"create_time\": \"<long>\",\n      \"depart_order\": \"<integer>\",\n      \"last_update_time\": \"<long>\",\n      \"parent_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"is_delete\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"create_time\": \"<long>\",\n      \"depart_order\": \"<integer>\",\n      \"last_update_time\": \"<long>\",\n      \"parent_id\": \"<string>\"\n    }\n  ],\n  \"data_count\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"200\",\n  \"message\": \"success\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc59d83b-ad9a-4738-8486-a5b644d9b8f2",
+          "name": "岗位信息同步",
+          "request": {
+            "name": "岗位信息同步",
+            "description": {
+              "content": "岗位信息同步",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event",
+                "post"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"is_delete\": \"<integer>\",\n      \"post_id\": \"<string>\",\n      \"post_name\": \"<string>\",\n      \"create_time\": \"<long>\",\n      \"last_update_time\": \"<long>\",\n      \"post_order\": \"<integer>\"\n    },\n    {\n      \"is_delete\": \"<integer>\",\n      \"post_id\": \"<string>\",\n      \"post_name\": \"<string>\",\n      \"create_time\": \"<long>\",\n      \"last_update_time\": \"<long>\",\n      \"post_order\": \"<integer>\"\n    }\n  ],\n  \"data_count\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab48f592-8a5b-4f14-a3ae-e2c556608100",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    "post"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"is_delete\": \"<integer>\",\n      \"post_id\": \"<string>\",\n      \"post_name\": \"<string>\",\n      \"create_time\": \"<long>\",\n      \"last_update_time\": \"<long>\",\n      \"post_order\": \"<integer>\"\n    },\n    {\n      \"is_delete\": \"<integer>\",\n      \"post_id\": \"<string>\",\n      \"post_name\": \"<string>\",\n      \"create_time\": \"<long>\",\n      \"last_update_time\": \"<long>\",\n      \"post_order\": \"<integer>\"\n    }\n  ],\n  \"data_count\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"200\",\n  \"message\": \"success\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "120266bb-e280-4561-a0a1-b45e48ef743b",
+          "name": "学习项目报名人员同步",
+          "request": {
+            "name": "学习项目报名人员同步",
+            "description": {
+              "content": "学习项目报名人员同步",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event",
+                "study_project_user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"project_id\": \"<string>\",\n  \"user_id\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55cea1f3-8165-448a-8ba1-dfcd678fcf90",
+          "name": "人员信息同步",
+          "request": {
+            "name": "人员信息同步",
+            "description": {
+              "content": "人员信息同步",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": [\n    {\n      \"department_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_delete\": \"<integer>\",\n      \"user_id\": \"<string>\",\n      \"user_name\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"charge_department_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"create_time\": \"<long>\",\n      \"email\": \"<string>\",\n      \"extend_column\": [\n        {\n          \"column_name\": \"<string>\",\n          \"column_order\": \"<integer>\",\n          \"column_value\": \"<string>\"\n        },\n        {\n          \"column_name\": \"<string>\",\n          \"column_order\": \"<integer>\",\n          \"column_value\": \"<string>\"\n        }\n      ],\n      \"is_admin\": \"<boolean>\",\n      \"jobnumber\": \"<string>\",\n      \"last_update_time\": \"<long>\",\n      \"mobile\": \"<string>\",\n      \"post_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"post_names\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"department_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_delete\": \"<integer>\",\n      \"user_id\": \"<string>\",\n      \"user_name\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"charge_department_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"create_time\": \"<long>\",\n      \"email\": \"<string>\",\n      \"extend_column\": [\n        {\n          \"column_name\": \"<string>\",\n          \"column_order\": \"<integer>\",\n          \"column_value\": \"<string>\"\n        },\n        {\n          \"column_name\": \"<string>\",\n          \"column_order\": \"<integer>\",\n          \"column_value\": \"<string>\"\n        }\n      ],\n      \"is_admin\": \"<boolean>\",\n      \"jobnumber\": \"<string>\",\n      \"last_update_time\": \"<long>\",\n      \"mobile\": \"<string>\",\n      \"post_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"post_names\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"data_count\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f1fe778-22a2-4f49-9196-e4c2638b8ca1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": [\n    {\n      \"department_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_delete\": \"<integer>\",\n      \"user_id\": \"<string>\",\n      \"user_name\": \"<string>\",\n      \"active\": false,\n      \"charge_department_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"create_time\": \"<long>\",\n      \"email\": \"<string>\",\n      \"extend_column\": [\n        {\n          \"column_name\": \"<string>\",\n          \"column_order\": \"<integer>\",\n          \"column_value\": \"<string>\"\n        },\n        {\n          \"column_name\": \"<string>\",\n          \"column_order\": \"<integer>\",\n          \"column_value\": \"<string>\"\n        }\n      ],\n      \"is_admin\": false,\n      \"jobnumber\": \"<string>\",\n      \"last_update_time\": \"<long>\",\n      \"mobile\": \"<string>\",\n      \"post_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"post_names\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"department_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"is_delete\": \"<integer>\",\n      \"user_id\": \"<string>\",\n      \"user_name\": \"<string>\",\n      \"active\": false,\n      \"charge_department_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"create_time\": \"<long>\",\n      \"email\": \"<string>\",\n      \"extend_column\": [\n        {\n          \"column_name\": \"<string>\",\n          \"column_order\": \"<integer>\",\n          \"column_value\": \"<string>\"\n        },\n        {\n          \"column_name\": \"<string>\",\n          \"column_order\": \"<integer>\",\n          \"column_value\": \"<string>\"\n        }\n      ],\n      \"is_admin\": false,\n      \"jobnumber\": \"<string>\",\n      \"last_update_time\": \"<long>\",\n      \"mobile\": \"<string>\",\n      \"post_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"post_names\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"data_count\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"200\",\n  \"message\": \"success\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://openapi.coolcollege.cn/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fcd41000-9218-483e-86e0-98d084a6a58c",
+    "name": "酷学院 REST 学习 thirdoa API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "欢迎使用酷学院开放平台Open API 服务\n\nContact Support:\n Email: service@coolcollege.cn",
+      "type": "text/plain"
+    }
+  }
+}

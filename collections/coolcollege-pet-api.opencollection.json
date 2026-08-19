@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "酷学院 REST 学习 pet API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a new pet to the store",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/exams/:exam-id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new pet to the store"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

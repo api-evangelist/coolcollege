@@ -2,8 +2,8 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: openapi/coolcollege-openapi-original.json
-note: Candidate tool list derived one-per-operation from the harvested OpenAPI. No
-  official hosted MCP server was found for 酷学院/Cool College as of the generated date.
+note: Candidate tool list derived one-per-operation from the harvested OpenAPI. No official hosted MCP
+  server was found for 酷学院/Cool College as of the generated date.
 server:
   name: coolcollege
   transport: http
@@ -129,3 +129,9 @@ tools:
   source_operation: openapi/coolcollege-openapi-original.json#GET /{enterprise-id}/users/{user-id}/score
   tags:
   - 学分
+deployment:
+  mode: none
+  verified: derived
+  tools: 24
+  checked: '2026-08-12'
+  source: catalog MCP census

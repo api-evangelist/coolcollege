@@ -1,0 +1,2252 @@
+{
+  "item": [
+    {
+      "id": "9f431a23-e8ad-4ada-9a56-3dc816839cba",
+      "name": "学习",
+      "description": {
+        "content": "* 访问学习相关的操作以及数据\n* ```{enterprise-id}```可在系统内获取\n* 学习的```{plan-id}```可以通过获取学习任务列表的API得到\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9875baca-019f-4808-a769-40175ed483b5",
+          "name": "获取学习任务列表",
+          "request": {
+            "name": "获取学习任务列表",
+            "description": {
+              "content": "获取学习任务列表信息，包含任务的plan id和对应的名称",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "plans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "begin_time",
+                  "value": "<string>",
+                  "description": "开始时间"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<string>",
+                  "description": "结束时间"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8713ac32-8a54-400e-87ff-ce66f84307a5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "plans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin_time",
+                      "value": "2020-08-15"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2020-08-18"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"true\",\n    \"plans\": [\n      {\n        \"id\": \"1790288206508462080\",\n        \"name\": \"学完这个瘦三斤\",\n        \"begin_time\": 1584857523000,\n        \"end_time\": 1584857523000,\n        \"supervisor_id_list\": [\n          \"1789888713963212800\",\n          \"1789888713963212800\"\n        ]\n      },\n      {\n        \"id\": \"1790288206508462080\",\n        \"name\": \"学完这个瘦三斤\",\n        \"begin_time\": 1584857523000,\n        \"end_time\": 1584857523000,\n        \"supervisor_id_list\": [\n          \"1789888713963212800\",\n          \"1789888713963212800\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef18ec81-bdab-4985-ac91-e2ca94023063",
+          "name": "获取学习任务状态信息",
+          "request": {
+            "name": "获取学习任务状态信息",
+            "description": {
+              "content": "获取学习任务的监控状态信息",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "plans",
+                ":plan-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "passing_status",
+                  "value": "<string>",
+                  "description": "提供结果过滤的参数，过滤条件为是否通过相关"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_status",
+                  "value": "<string>",
+                  "description": "任务状态，通过状态可以筛选任务分类"
+                },
+                {
+                  "disabled": false,
+                  "key": "search_name",
+                  "value": "<string>",
+                  "description": "通过人员姓名筛选任务结果"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "308a4beb-c2b9-47d7-ba4b-757021eac3a1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "plans",
+                    ":plan-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "passing_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plan_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"creator_name\": \"张三\",\n    \"total\": 37,\n    \"completed\": 24,\n    \"ongoing\": 13,\n    \"overdue\": 0,\n    \"monitoring_data\": {\n      \"has_next_page\": \"true\",\n      \"data\": [\n        {\n          \"user_name\": \"Samus Aran\",\n          \"user_id\": \"1789931551983800320\",\n          \"job_number\": \"wwwww\",\n          \"plan_status\": \"completed\",\n          \"plan_status_name\": \"已完成\",\n          \"passing_status\": \"passed\",\n          \"passing_status_name\": \"合格\",\n          \"department_names\": [\n            \"保卫科\",\n            \"保卫科\"\n          ],\n          \"position_names\": [\n            \"研发部\",\n            \"研发部\"\n          ],\n          \"progress\": 100,\n          \"study_progress\": 100,\n          \"exam_passed\": 1,\n          \"credits\": \"22\",\n          \"certificate_name\": \"工程师认证\",\n          \"study_duration\": \"00:30:00\",\n          \"offline_train_duration\": \"00:27:00\",\n          \"exam_duration\": \"00:30:00\",\n          \"stage_data\": [\n            {\n              \"stage_seq_number\": 1,\n              \"stage_name\": \"阶段一\",\n              \"stage_progress\": 100,\n              \"elements\": [\n                {\n                  \"title\": \"20天java从入门到脊柱侧弯\",\n                  \"is_exam\": \"true\",\n                  \"exam_passing_status\": \"passed\",\n                  \"element_progress\": 100,\n                  \"score\": 100,\n                  \"content_type\": \"course\",\n                  \"content_type_name\": \"课程\",\n                  \"id\": \"1794902443897786368\"\n                },\n                {\n                  \"title\": \"20天java从入门到脊柱侧弯\",\n                  \"is_exam\": \"true\",\n                  \"exam_passing_status\": \"passed\",\n                  \"element_progress\": 100,\n                  \"score\": 100,\n                  \"content_type\": \"course\",\n                  \"content_type_name\": \"课程\",\n                  \"id\": \"1794902443897786368\"\n                }\n              ]\n            },\n            {\n              \"stage_seq_number\": 1,\n              \"stage_name\": \"阶段一\",\n              \"stage_progress\": 100,\n              \"elements\": [\n                {\n                  \"title\": \"20天java从入门到脊柱侧弯\",\n                  \"is_exam\": \"true\",\n                  \"exam_passing_status\": \"passed\",\n                  \"element_progress\": 100,\n                  \"score\": 100,\n                  \"content_type\": \"course\",\n                  \"content_type_name\": \"课程\",\n                  \"id\": \"1794902443897786368\"\n                },\n                {\n                  \"title\": \"20天java从入门到脊柱侧弯\",\n                  \"is_exam\": \"true\",\n                  \"exam_passing_status\": \"passed\",\n                  \"element_progress\": 100,\n                  \"score\": 100,\n                  \"content_type\": \"course\",\n                  \"content_type_name\": \"课程\",\n                  \"id\": \"1794902443897786368\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"user_name\": \"Samus Aran\",\n          \"user_id\": \"1789931551983800320\",\n          \"job_number\": \"wwwww\",\n          \"plan_status\": \"completed\",\n          \"plan_status_name\": \"已完成\",\n          \"passing_status\": \"passed\",\n          \"passing_status_name\": \"合格\",\n          \"department_names\": [\n            \"保卫科\",\n            \"保卫科\"\n          ],\n          \"position_names\": [\n            \"研发部\",\n            \"研发部\"\n          ],\n          \"progress\": 100,\n          \"study_progress\": 100,\n          \"exam_passed\": 1,\n          \"credits\": \"22\",\n          \"certificate_name\": \"工程师认证\",\n          \"study_duration\": \"00:30:00\",\n          \"offline_train_duration\": \"00:27:00\",\n          \"exam_duration\": \"00:30:00\",\n          \"stage_data\": [\n            {\n              \"stage_seq_number\": 1,\n              \"stage_name\": \"阶段一\",\n              \"stage_progress\": 100,\n              \"elements\": [\n                {\n                  \"title\": \"20天java从入门到脊柱侧弯\",\n                  \"is_exam\": \"true\",\n                  \"exam_passing_status\": \"passed\",\n                  \"element_progress\": 100,\n                  \"score\": 100,\n                  \"content_type\": \"course\",\n                  \"content_type_name\": \"课程\",\n                  \"id\": \"1794902443897786368\"\n                },\n                {\n                  \"title\": \"20天java从入门到脊柱侧弯\",\n                  \"is_exam\": \"true\",\n                  \"exam_passing_status\": \"passed\",\n                  \"element_progress\": 100,\n                  \"score\": 100,\n                  \"content_type\": \"course\",\n                  \"content_type_name\": \"课程\",\n                  \"id\": \"1794902443897786368\"\n                }\n              ]\n            },\n            {\n              \"stage_seq_number\": 1,\n              \"stage_name\": \"阶段一\",\n              \"stage_progress\": 100,\n              \"elements\": [\n                {\n                  \"title\": \"20天java从入门到脊柱侧弯\",\n                  \"is_exam\": \"true\",\n                  \"exam_passing_status\": \"passed\",\n                  \"element_progress\": 100,\n                  \"score\": 100,\n                  \"content_type\": \"course\",\n                  \"content_type_name\": \"课程\",\n                  \"id\": \"1794902443897786368\"\n                },\n                {\n                  \"title\": \"20天java从入门到脊柱侧弯\",\n                  \"is_exam\": \"true\",\n                  \"exam_passing_status\": \"passed\",\n                  \"element_progress\": 100,\n                  \"score\": 100,\n                  \"content_type\": \"course\",\n                  \"content_type_name\": \"课程\",\n                  \"id\": \"1794902443897786368\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"supervisor_id_list\": [\n      \"1789888713963212800\",\n      \"1789888713963212800\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "feaed0f3-026a-4467-a575-81a1bfae750a",
+          "name": "获取学习项目信息",
+          "request": {
+            "name": "获取学习项目信息",
+            "description": {
+              "content": "获取学习项目信息",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "study_project_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<string>",
+                  "description": "yyyy-mm-dd格式化的日期"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<string>",
+                  "description": "yyyy-mm-dd格式化的日期"
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>",
+                  "description": "根据学习项目名称查询"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d15b430e-d234-42a8-a326-d30df1102514",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "study_project_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"false\",\n    \"list\": [\n      {\n        \"id\": \"6cfb8bd149d048afb43eb6bf39009783\",\n        \"title\": \"学习项目\",\n        \"create_time\": 1617262514000,\n        \"is_free\": false,\n        \"classify_name\": \"经验分享\",\n        \"cover\": \"https://oss.coolcollege.cn/1800048808671973376.png\",\n        \"need_enroll\": false,\n        \"official_price\": 100,\n        \"preferential_price\": 10,\n        \"lecturer_name\": \"崔建中（示例）\",\n        \"tags\": [\n          [],\n          []\n        ]\n      },\n      {\n        \"id\": \"6cfb8bd149d048afb43eb6bf39009783\",\n        \"title\": \"学习项目\",\n        \"create_time\": 1617262514000,\n        \"is_free\": true,\n        \"classify_name\": \"经验分享\",\n        \"cover\": \"https://oss.coolcollege.cn/1800048808671973376.png\",\n        \"need_enroll\": false,\n        \"official_price\": 100,\n        \"preferential_price\": 10,\n        \"lecturer_name\": \"崔建中（示例）\",\n        \"tags\": [\n          [],\n          []\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f472010-6b34-464d-bfed-a26015c76b22",
+          "name": "查询用户的学分",
+          "request": {
+            "name": "查询用户的学分",
+            "description": {
+              "content": "查询某个用户某年的学分之和",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "users",
+                ":user-id",
+                "score"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<string>",
+                  "description": "(Required) 年份"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7870876b-5dda-4968-8a17-ec5ad68c6f48",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "users",
+                    ":user-id",
+                    "score"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "year",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total_score\": \"12\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53636868-3307-4d51-8a32-d52feb7a7619",
+          "name": "查询用户的实操",
+          "request": {
+            "name": "查询用户的实操",
+            "description": {
+              "content": "查询某个用户实操详情",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "operations",
+                ":approval-id",
+                "approval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "submit_user_id",
+                  "value": "<string>",
+                  "description": "(Required) 提交人id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be4ffd79-7630-4bc2-bd5a-2974a5b0cbda",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "operations",
+                    ":approval-id",
+                    "approval"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "submit_user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"approval_user\": \"张三\",\n    \"score\": \"53.0\",\n    \"submit_time\": 1619444902000,\n    \"suggest\": \"实操做的非常棒\",\n    \"title\": \"实操演练\",\n    \"content\": \"实操的要求说明\",\n    \"operation_source\": \"study 学习任务\",\n    \"steps\": [\n      {\n        \"step\": \"1阶段\",\n        \"content\": \"学员实操内容\"\n      },\n      {\n        \"step\": \"1阶段\",\n        \"content\": \"学员实操内容\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ae94e1f-b054-429c-81aa-57f954ea5f52",
+          "name": "获取员工档案信息",
+          "request": {
+            "name": "获取员工档案信息",
+            "description": {
+              "content": "获取员工档案信息",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "archives"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_time",
+                  "value": "<string>",
+                  "description": "yyyy-mm-dd格式化的日期"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<string>",
+                  "description": "yyyy-mm-dd格式化的日期"
+                },
+                {
+                  "disabled": false,
+                  "key": "job_status",
+                  "value": "<string>",
+                  "description": "人员在职状态"
+                },
+                {
+                  "disabled": false,
+                  "key": "search_name",
+                  "value": "<string>",
+                  "description": "人员姓名"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39119aca-1a69-4871-987b-1c8ceff0a9ea",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "archives"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "job_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"false\",\n    \"users\": [\n      {\n        \"user_id\": \"1790288206508462080\",\n        \"jobnumber\": \"888888\",\n        \"user_name\": \"张三\",\n        \"completed_rate\": \"10%\",\n        \"overdue_rate\": \"10%\",\n        \"credits\": 10,\n        \"certificate_count\": 97,\n        \"new_employee_ongoing_count\": 10,\n        \"new_employee_completed_count\": 10,\n        \"new_employee_overdue_count\": 12,\n        \"study_ongoing_count\": 1,\n        \"study_completed_count\": 1,\n        \"study_overdue_count\": 12,\n        \"exam_un_join_count\": 12,\n        \"exam_passed_count\": 1,\n        \"exam_failed_count\": 12,\n        \"exam_missed_count\": 12\n      },\n      {\n        \"user_id\": \"1790288206508462080\",\n        \"jobnumber\": \"888888\",\n        \"user_name\": \"张三\",\n        \"completed_rate\": \"10%\",\n        \"overdue_rate\": \"10%\",\n        \"credits\": 10,\n        \"certificate_count\": 97,\n        \"new_employee_ongoing_count\": 10,\n        \"new_employee_completed_count\": 10,\n        \"new_employee_overdue_count\": 12,\n        \"study_ongoing_count\": 1,\n        \"study_completed_count\": 1,\n        \"study_overdue_count\": 12,\n        \"exam_un_join_count\": 12,\n        \"exam_passed_count\": 1,\n        \"exam_failed_count\": 12,\n        \"exam_missed_count\": 12\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9466f88e-a927-4ecf-9b65-ef9286bb23ff",
+          "name": "根据酷学院用户id查询app用户id",
+          "request": {
+            "name": "根据酷学院用户id查询app用户id",
+            "description": {
+              "content": "根据酷学院用户id查询app用户id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "get_userId_appId_list",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_ids\": \"<int64>\",\n  \"app_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "546746e8-9f1d-4e38-9e3a-f8bf5d8d5d09",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "get_userId_appId_list",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_ids\": \"<int64>\",\n  \"app_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ec8ad6a-5233-423b-b814-11f23d404b6b",
+          "name": "根据app用户id查询酷学院用户id",
+          "request": {
+            "name": "根据app用户id查询酷学院用户id",
+            "description": {
+              "content": "根据app用户id查询酷学院用户id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "get_appId_userId_list",
+                "query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"app_user_ids\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd0a5e50-0ff9-4074-8d21-767883800a28",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "get_appId_userId_list",
+                    "query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"app_user_ids\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04f61235-ff30-45bf-87c9-5a35e2324642",
+          "name": "根据用户名搜索用户",
+          "request": {
+            "name": "根据用户名搜索用户",
+            "description": {
+              "content": "根据用户名搜索用户",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) 用户名"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a114128-bbde-422c-bdc3-afa8a44ab6f3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"users\": [\n      {\n        \"id\": \"11111\",\n        \"name\": \"张三\"\n      },\n      {\n        \"id\": \"11111\",\n        \"name\": \"张三\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87589619-7b71-4734-a35a-8b9a9bf04565",
+          "name": "获取考试任务列表(新)",
+          "request": {
+            "name": "获取考试任务列表(新)",
+            "description": {
+              "content": "获取考试任务列表信息",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "new_exams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<Number>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<Number>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "exam_type",
+                  "value": "<string>",
+                  "description": "任务类型（默认total(全部), published(已发布), draft(草稿)）"
+                },
+                {
+                  "disabled": false,
+                  "key": "exam_title",
+                  "value": "<string>",
+                  "description": "考试任务名称/创建人"
+                },
+                {
+                  "disabled": false,
+                  "key": "match",
+                  "value": "<string>",
+                  "description": "任务名称是否精准匹配 默认true(精准匹配),false(模糊匹配) "
+                },
+                {
+                  "disabled": false,
+                  "key": "begin_time",
+                  "value": "<Number>",
+                  "description": "考试任务创建开始时间"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<string>",
+                  "description": "考试任务创建结束时间"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e5b7262-25a7-402d-a409-9a1331286476",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "new_exams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<Number>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<Number>"
+                    },
+                    {
+                      "key": "exam_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exam_title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin_time",
+                      "value": "1676455679000"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "1676455679000"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"false\",\n    \"exams\": [\n      {\n        \"exam_id\": \"1790288206508462080\",\n        \"exam_title\": \"酷学院考试系统\",\n        \"status\": \"published\",\n        \"answer_rule\": \"custom\",\n        \"exam_count\": 0,\n        \"total_user_count\": 100,\n        \"passed_user_count\": 97,\n        \"failed_user_count\": 2,\n        \"un_join_user_count\": 1,\n        \"mark_pending_count\": 2,\n        \"creator_name\": \"张三\",\n        \"create_time\": \"1584857523000\"\n      },\n      {\n        \"exam_id\": \"1790288206508462080\",\n        \"exam_title\": \"酷学院考试系统\",\n        \"status\": \"published\",\n        \"answer_rule\": \"custom\",\n        \"exam_count\": 0,\n        \"total_user_count\": 100,\n        \"passed_user_count\": 97,\n        \"failed_user_count\": 2,\n        \"un_join_user_count\": 1,\n        \"mark_pending_count\": 2,\n        \"creator_name\": \"张三\",\n        \"create_time\": \"1584857523000\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c57922c4-77e7-4aba-8f85-622a92038dff",
+          "name": "获取考试人员信息列表(新)",
+          "request": {
+            "name": "获取考试人员信息列表(新)",
+            "description": {
+              "content": "获取考试人员信息列表",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "new_exams",
+                ":exam-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<Number>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<Number>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "exam_status",
+                  "value": "<string>",
+                  "description": "学员考试状态 all/全部, absence/未考，passed/及格，failed/不及格"
+                },
+                {
+                  "disabled": false,
+                  "key": "search_name",
+                  "value": "<string>",
+                  "description": "考试人员名称"
+                },
+                {
+                  "disabled": false,
+                  "key": "dept_id",
+                  "value": "<Number>",
+                  "description": "部门编号"
+                },
+                {
+                  "disabled": false,
+                  "key": "post_id",
+                  "value": "<Number>",
+                  "description": "岗位编号"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_ids",
+                  "value": "<string>",
+                  "description": "用户id集合"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f25d9f34-ef4b-47fa-8a62-d517ca9d7fd2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "new_exams",
+                    ":exam-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<Number>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<Number>"
+                    },
+                    {
+                      "key": "exam_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dept_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "post_id",
+                      "value": "1"
+                    },
+                    {
+                      "key": "user_ids",
+                      "value": "1826426202886377472,1826444321675677696"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total_count\": 37,\n    \"pass_count\": 24,\n    \"fail_count\": 13,\n    \"un_join_count\": 0,\n    \"mark_pending_count\": 0,\n    \"monitoring_data\": {\n      \"has_next_page\": \"true\",\n      \"total\": 3214.3740519147577,\n      \"exam_users\": [\n        {\n          \"user_name\": \"Samus Aran\",\n          \"user_id\": \"1789931551983800320\",\n          \"jobnumber\": \"12345678\",\n          \"task_id\": \"1789931551983800320\",\n          \"exam_status\": \"passed\",\n          \"exam_status_name\": \"不合格\",\n          \"department_names\": [\n            \"保卫科\",\n            \"保卫科\"\n          ],\n          \"position_names\": [\n            \"开发\",\n            \"开发\"\n          ],\n          \"exam_count\": 1,\n          \"exam_score\": 23.4,\n          \"start_time\": \"1676455679000\",\n          \"end_time\": \"1676455679000\",\n          \"creator_name\": \"阿Q\"\n        },\n        {\n          \"user_name\": \"Samus Aran\",\n          \"user_id\": \"1789931551983800320\",\n          \"jobnumber\": \"12345678\",\n          \"task_id\": \"1789931551983800320\",\n          \"exam_status\": \"passed\",\n          \"exam_status_name\": \"待阅卷\",\n          \"department_names\": [\n            \"保卫科\",\n            \"保卫科\"\n          ],\n          \"position_names\": [\n            \"开发\",\n            \"开发\"\n          ],\n          \"exam_count\": 1,\n          \"exam_score\": 23.4,\n          \"start_time\": \"1676455679000\",\n          \"end_time\": \"1676455679000\",\n          \"creator_name\": \"阿Q\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfa5cf8a-9d6e-4657-9c3e-dad1894661c4",
+          "name": "考试任务变更人员（新）",
+          "request": {
+            "name": "考试任务变更人员（新）",
+            "description": {
+              "content": "考试任务变更人员",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "new_exams",
+                ":exam-id",
+                "change_user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<String>\",\n  \"begin_time\": \"<Number>\",\n  \"end_time\": \"<Number>\",\n  \"exam_count\": \"<Number>\",\n  \"user_ids\": \"<Array>\",\n  \"post_ids\": \"<Array>\",\n  \"department_ids\": \"<Array>\",\n  \"group_ids\": \"<Array>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5dc61e2d-e528-48a3-a24e-64dbd999d310",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "new_exams",
+                    ":exam-id",
+                    "change_user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"add\",\n  \"begin_time\": 1676455679000,\n  \"end_time\": 1676455679000,\n  \"exam_count\": 3,\n  \"user_ids\": [\n    1794890504450740200,\n    1794890504450740200\n  ],\n  \"post_ids\": [\n    12,\n    11\n  ],\n  \"department_ids\": [\n    14,\n    13\n  ],\n  \"group_ids\": [\n    1,\n    2\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d57499c-d1e7-4912-a940-0cd84ca62604",
+          "name": "获取考试任务列表(即将废弃)",
+          "request": {
+            "name": "获取考试任务列表(即将废弃)",
+            "description": {
+              "content": "获取考试任务列表信息",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "exams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "exam_type",
+                  "value": "<string>",
+                  "description": "(Required) 任务类型（total, un_start, on_going, end）"
+                },
+                {
+                  "disabled": false,
+                  "key": "exam_title",
+                  "value": "<string>",
+                  "description": "任务名称"
+                },
+                {
+                  "disabled": false,
+                  "key": "begin_time",
+                  "value": "<string>",
+                  "description": "开始时间"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<string>",
+                  "description": "结束时间"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94137932-8a05-438d-9687-df30cfead671",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "exams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exam_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exam_title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin_time",
+                      "value": "2020-08-15"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2020-08-18"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"false\",\n    \"exams\": [\n      {\n        \"exam_id\": \"1790288206508462080\",\n        \"exam_title\": \"学完这个瘦三斤\",\n        \"total_user_count\": 100,\n        \"passed_user_count\": 1,\n        \"failed_user_count\": 1,\n        \"un_join_user_count\": 1,\n        \"mark_pending_count\": 97,\n        \"creator_name\": \"张三\",\n        \"create_time\": \"1584857523000\",\n        \"begin_time\": \"1584857523000\",\n        \"end_time\": \"1584857523000\",\n        \"supervisor_id_list\": [\n          \"1789888713963212800\",\n          \"1789888713963212800\"\n        ]\n      },\n      {\n        \"exam_id\": \"1790288206508462080\",\n        \"exam_title\": \"学完这个瘦三斤\",\n        \"total_user_count\": 100,\n        \"passed_user_count\": 1,\n        \"failed_user_count\": 1,\n        \"un_join_user_count\": 1,\n        \"mark_pending_count\": 97,\n        \"creator_name\": \"张三\",\n        \"create_time\": \"1584857523000\",\n        \"begin_time\": \"1584857523000\",\n        \"end_time\": \"1584857523000\",\n        \"supervisor_id_list\": [\n          \"1789888713963212800\",\n          \"1789888713963212800\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cead9ad3-337b-47d7-a0e6-cf59803134b8",
+          "name": "获取考试任务监控信息(即将废弃)",
+          "request": {
+            "name": "获取考试任务监控信息(即将废弃)",
+            "description": {},
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "exams",
+                ":exam-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "exam_status",
+                  "value": "<string>",
+                  "description": "人员考试状态"
+                },
+                {
+                  "disabled": false,
+                  "key": "search_name",
+                  "value": "<string>",
+                  "description": "通过人员姓名筛选任务结果"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6951f252-3369-4f29-93b2-20442006f6a6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "exams",
+                    ":exam-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exam_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"creator_name\": \"张三\",\n    \"total_count\": 37,\n    \"pass_count\": 24,\n    \"fail_count\": 13,\n    \"un_join_count\": 0,\n    \"monitoring_data\": {\n      \"has_next_page\": \"true\",\n      \"exam_users\": [\n        {\n          \"user_name\": \"Samus Aran\",\n          \"user_id\": \"1789931551983800320\",\n          \"jobnumber\": \"wwwww\",\n          \"exam_status\": \"passed\",\n          \"exam_status_name\": \"合格\",\n          \"department_names\": [\n            \"保卫科\",\n            \"保卫科\"\n          ],\n          \"position_names\": [\n            \"开发\",\n            \"开发\"\n          ],\n          \"exam_count\": 1,\n          \"exam_score\": 23.4\n        },\n        {\n          \"user_name\": \"Samus Aran\",\n          \"user_id\": \"1789931551983800320\",\n          \"jobnumber\": \"wwwww\",\n          \"exam_status\": \"passed\",\n          \"exam_status_name\": \"不合格\",\n          \"department_names\": [\n            \"保卫科\",\n            \"保卫科\"\n          ],\n          \"position_names\": [\n            \"开发\",\n            \"开发\"\n          ],\n          \"exam_count\": 1,\n          \"exam_score\": 23.4\n        }\n      ],\n      \"total\": 8306.538471208285\n    },\n    \"supervisor_id_list\": [\n      \"1789888713963212800\",\n      \"1789888713963212800\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a60af1fa-3df0-4833-9ca6-cf97303b4e0a",
+          "name": "获取讲师信息",
+          "request": {
+            "name": "获取讲师信息",
+            "description": {
+              "content": "获取讲师信息",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "lecturers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "lecturer_name",
+                  "value": "<string>",
+                  "description": "讲师姓名"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02e2dc54-3123-4bdf-8833-2db44994f829",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "lecturers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lecturer_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"true\",\n    \"lecturer_list\": [\n      {\n        \"lecturer_id\": \"1790288206508462080\",\n        \"lecturer_name\": \"张三\",\n        \"level_name\": \"string\",\n        \"level_id\": \"14e42991a0684d2ea71ebbff5566d7aa\",\n        \"course_count\": 856.0040898433064,\n        \"create_user_id\": \"string\",\n        \"create_user_name\": \"李四\",\n        \"create_time\": 4296.346982414999,\n        \"status\": \"on\"\n      },\n      {\n        \"lecturer_id\": \"1790288206508462080\",\n        \"lecturer_name\": \"张三\",\n        \"level_name\": \"string\",\n        \"level_id\": \"14e42991a0684d2ea71ebbff5566d7aa\",\n        \"course_count\": 6466.653451817609,\n        \"create_user_id\": \"string\",\n        \"create_user_name\": \"李四\",\n        \"create_time\": 3833.9996543465218,\n        \"status\": \"on\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6f1bb6a-5938-4e76-a4d4-1525cf317c0a",
+          "name": "获取证书列表",
+          "request": {
+            "name": "获取证书列表",
+            "description": {
+              "content": "获取企业证书列表",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "get_certificate_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "keyword",
+                  "value": "<string>",
+                  "description": "证书名称搜索"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "证书状态"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0ae4e9a-7ad5-4c28-a901-57e8913e70d9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "get_certificate_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "keyword",
+                      "value": ""
+                    },
+                    {
+                      "key": "status",
+                      "value": "1：启用,0：停用"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"true\",\n    \"list\": [\n      {\n        \"id\": \"1790288206508462080\",\n        \"certificate_name\": \"防疫健康管理师认证\",\n        \"certificate_code\": \"21121231\",\n        \"summary\": \"兹证明通过认证考核，特颁发此证\",\n        \"create_time\": \"1603366471000\",\n        \"status\": 5606.39956423067,\n        \"overdue_date\": 5708.7939415100245\n      },\n      {\n        \"id\": \"1790288206508462080\",\n        \"certificate_name\": \"防疫健康管理师认证\",\n        \"certificate_code\": \"21121231\",\n        \"summary\": \"兹证明通过认证考核，特颁发此证\",\n        \"create_time\": \"1603366471000\",\n        \"status\": 9589.009727305483,\n        \"overdue_date\": 969.7871702032057\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9014001c-afc4-474c-8177-7783391c12f1",
+          "name": "获取证书排行榜",
+          "request": {
+            "name": "获取证书排行榜",
+            "description": {
+              "content": "获取企业证书排行榜",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "get_certificate_rank"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39e744e9-ca79-47fe-8685-e0493dfd5d91",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "get_certificate_rank"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"false\",\n    \"list\": [\n      {\n        \"user_id\": \"1790288206508462080\",\n        \"user_name\": \"张三\",\n        \"jobnumber\": \"888888\",\n        \"rank\": 8633.206354741227,\n        \"department_names\": [\n          \"技术研发部\",\n          \"技术研发部\"\n        ],\n        \"certificate_count\": 9317.926907217541\n      },\n      {\n        \"user_id\": \"1790288206508462080\",\n        \"user_name\": \"张三\",\n        \"jobnumber\": \"888888\",\n        \"rank\": 5719.9818452670925,\n        \"department_names\": [\n          \"技术研发部\",\n          \"技术研发部\"\n        ],\n        \"certificate_count\": 4982.970284416913\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88ed60e3-2a7e-481e-bfae-526e0790f9d8",
+          "name": "获取某人证书详情",
+          "request": {
+            "name": "获取某人证书详情",
+            "description": {
+              "content": "获取某人证书详情",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "users",
+                ":user-id",
+                "certificate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1898b094-8a27-4b86-9638-60b6c084143b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "users",
+                    ":user-id",
+                    "certificate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"true\",\n    \"list\": [\n      {\n        \"certificate_id\": \"1790288206508462080\",\n        \"certificate_name\": \"高级厨师\",\n        \"source\": \"高级厨师证书考试\",\n        \"get_certificate_timestamp\": 3280.7502763385887,\n        \"get_type\": \"系统\",\n        \"overdue_date\": 0,\n        \"certificate_random_code\": \"56500\",\n        \"certificate_reason\": \"表现优秀，特颁此证\",\n        \"image_url\": \"http://oss.coolcollege.cn/user-resource/staging/certs/2112123156500b4e84252-d72d-4d81-8b51-98baea569d08.png\"\n      },\n      {\n        \"certificate_id\": \"1790288206508462080\",\n        \"certificate_name\": \"高级厨师\",\n        \"source\": \"高级厨师证书考试\",\n        \"get_certificate_timestamp\": 8475.739959060125,\n        \"get_type\": \"系统\",\n        \"overdue_date\": 0,\n        \"certificate_random_code\": \"56500\",\n        \"certificate_reason\": \"表现优秀，特颁此证\",\n        \"image_url\": \"http://oss.coolcollege.cn/user-resource/staging/certs/2112123156500b4e84252-d72d-4d81-8b51-98baea569d08.png\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a12366fd-846d-4df7-b869-9d9e93858180",
+          "name": "获取企业用户证书列表",
+          "request": {
+            "name": "获取企业用户证书列表",
+            "description": {
+              "content": "获取企业用户证书列表",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "get_certificate_user_list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<string>",
+                  "description": "分页的页码，取值为1，2，3..."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<string>",
+                  "description": "分页大小，表示每页返回的记录数量"
+                },
+                {
+                  "disabled": false,
+                  "key": "begin_time",
+                  "value": "<string>",
+                  "description": "开始时间"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_time",
+                  "value": "<string>",
+                  "description": "结束时间"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2fd70287-c5d4-419a-b7c6-efca22ba23ed",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "get_certificate_user_list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "begin_time",
+                      "value": "2021-06-05"
+                    },
+                    {
+                      "key": "end_time",
+                      "value": "2021-06-07"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"0\",\n  \"message\": \"success\",\n  \"data\": {\n    \"total\": 100,\n    \"has_next_page\": \"false\",\n    \"list\": [\n      {\n        \"user_id\": \"1794892766317252608\",\n        \"certificate_id\": \"1794932176505147392\",\n        \"certificate_name\": \"高级厨师\",\n        \"certificate_type\": \"系统\",\n        \"overdue_date\": 8192.627253436995,\n        \"source\": \"高级厨师证书考试\",\n        \"create_time\": 1597638247000,\n        \"image_url\": \"http://oss.coolcollege.cn/user-resource/staging/certs/2112123156500b4e84252-d72d-4d81-8b51-98baea569d08.png\"\n      },\n      {\n        \"user_id\": \"1794892766317252608\",\n        \"certificate_id\": \"1794932176505147392\",\n        \"certificate_name\": \"高级厨师\",\n        \"certificate_type\": \"系统\",\n        \"overdue_date\": 4745.338026026994,\n        \"source\": \"高级厨师证书考试\",\n        \"create_time\": 1597638247000,\n        \"image_url\": \"http://oss.coolcollege.cn/user-resource/staging/certs/2112123156500b4e84252-d72d-4d81-8b51-98baea569d08.png\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce24a36f-7a48-4e51-bcf7-48f461cccb52",
+          "name": "获取访问接口所需的access_token",
+          "request": {
+            "name": "获取访问接口所需的access_token",
+            "description": {
+              "content": "获取访问接口所需的access_token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":enterprise-id",
+                "get_access_token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) apiKey"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_secret",
+                  "value": "<string>",
+                  "description": "(Required) apiSecret"
+                },
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<number>",
+                  "description": "(Required) 13位时间戳, 精确到毫秒"
+                },
+                {
+                  "disabled": false,
+                  "key": "signature",
+                  "value": "<string>",
+                  "description": "(Required) 以timestamp 和 ```\\n``` 和 apiKey签名字符串，apiSecret为签名密钥，使用算法HmacSHA256计算的签名值。注意：计算出签名以后，需要进行urlencode，才能把签名参数拼接到url中"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57d852af-5c03-4c4c-9259-8024db43986a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":enterprise-id",
+                    "get_access_token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "signature",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "null",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://openapi.coolcollege.cn/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0e4874c7-002a-4d2b-a207-71c505e51953",
+    "name": "酷学院 REST 学习 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "欢迎使用酷学院开放平台Open API 服务\n\nContact Support:\n Email: service@coolcollege.cn",
+      "type": "text/plain"
+    }
+  }
+}

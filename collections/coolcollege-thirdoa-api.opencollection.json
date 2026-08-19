@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "酷学院 REST 学习 thirdoa API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "thirdoa",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "部门信息同步",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.coolcollege.cn/api/v2/event/dept",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "部门信息同步"
+        },
+        {
+          "info": {
+            "name": "岗位信息同步",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.coolcollege.cn/api/v2/event/post",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "岗位信息同步"
+        },
+        {
+          "info": {
+            "name": "学习项目报名人员同步",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.coolcollege.cn/api/v2/event/study_project_user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "学习项目报名人员同步"
+        },
+        {
+          "info": {
+            "name": "人员信息同步",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.coolcollege.cn/api/v2/event/user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "人员信息同步"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

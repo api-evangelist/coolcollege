@@ -1,0 +1,680 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "酷学院 REST 学习 API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "学习",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "获取学习任务列表",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/plans",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "begin_time",
+                "value": "2020-08-15",
+                "type": "query",
+                "description": "开始时间"
+              },
+              {
+                "name": "end_time",
+                "value": "2020-08-18",
+                "type": "query",
+                "description": "结束时间"
+              }
+            ]
+          },
+          "docs": "获取学习任务列表信息，包含任务的plan id和对应的名称"
+        },
+        {
+          "info": {
+            "name": "获取学习任务状态信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/plans/:plan-id",
+            "params": [
+              {
+                "name": "passing_status",
+                "value": "",
+                "type": "query",
+                "description": "提供结果过滤的参数，过滤条件为是否通过相关"
+              },
+              {
+                "name": "plan_status",
+                "value": "",
+                "type": "query",
+                "description": "任务状态，通过状态可以筛选任务分类"
+              },
+              {
+                "name": "search_name",
+                "value": "",
+                "type": "query",
+                "description": "通过人员姓名筛选任务结果"
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              }
+            ]
+          },
+          "docs": "获取学习任务的监控状态信息"
+        },
+        {
+          "info": {
+            "name": "获取学习项目信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/study_project_list",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "yyyy-mm-dd格式化的日期"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "yyyy-mm-dd格式化的日期"
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "根据学习项目名称查询"
+              }
+            ]
+          },
+          "docs": "获取学习项目信息"
+        },
+        {
+          "info": {
+            "name": "查询用户的学分",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/users/:user-id/score",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "年份"
+              }
+            ]
+          },
+          "docs": "查询某个用户某年的学分之和"
+        },
+        {
+          "info": {
+            "name": "查询用户的实操",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/operations/:approval-id/approval",
+            "params": [
+              {
+                "name": "submit_user_id",
+                "value": "",
+                "type": "query",
+                "description": "提交人id"
+              }
+            ]
+          },
+          "docs": "查询某个用户实操详情"
+        },
+        {
+          "info": {
+            "name": "获取员工档案信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/archives",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "yyyy-mm-dd格式化的日期"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "yyyy-mm-dd格式化的日期"
+              },
+              {
+                "name": "job_status",
+                "value": "",
+                "type": "query",
+                "description": "人员在职状态"
+              },
+              {
+                "name": "search_name",
+                "value": "",
+                "type": "query",
+                "description": "人员姓名"
+              }
+            ]
+          },
+          "docs": "获取员工档案信息"
+        },
+        {
+          "info": {
+            "name": "根据酷学院用户id查询app用户id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/get_userId_appId_list/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "根据酷学院用户id查询app用户id"
+        },
+        {
+          "info": {
+            "name": "根据app用户id查询酷学院用户id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/get_appId_userId_list/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "根据app用户id查询酷学院用户id"
+        },
+        {
+          "info": {
+            "name": "根据用户名搜索用户",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/users",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "用户名"
+              }
+            ]
+          },
+          "docs": "根据用户名搜索用户"
+        },
+        {
+          "info": {
+            "name": "获取考试任务列表(新)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/new_exams",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "exam_type",
+                "value": "",
+                "type": "query",
+                "description": "任务类型（默认total(全部), published(已发布), draft(草稿)）"
+              },
+              {
+                "name": "exam_title",
+                "value": "",
+                "type": "query",
+                "description": "考试任务名称/创建人"
+              },
+              {
+                "name": "match",
+                "value": "",
+                "type": "query",
+                "description": "任务名称是否精准匹配 默认true(精准匹配),false(模糊匹配) "
+              },
+              {
+                "name": "begin_time",
+                "value": "1676455679000",
+                "type": "query",
+                "description": "考试任务创建开始时间"
+              },
+              {
+                "name": "end_time",
+                "value": "1676455679000",
+                "type": "query",
+                "description": "考试任务创建结束时间"
+              }
+            ]
+          },
+          "docs": "获取考试任务列表信息"
+        },
+        {
+          "info": {
+            "name": "获取考试人员信息列表(新)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/new_exams/:exam-id",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "exam_status",
+                "value": "",
+                "type": "query",
+                "description": "学员考试状态 all/全部, absence/未考，passed/及格，failed/不及格"
+              },
+              {
+                "name": "search_name",
+                "value": "",
+                "type": "query",
+                "description": "考试人员名称"
+              },
+              {
+                "name": "dept_id",
+                "value": "1",
+                "type": "query",
+                "description": "部门编号"
+              },
+              {
+                "name": "post_id",
+                "value": "1",
+                "type": "query",
+                "description": "岗位编号"
+              },
+              {
+                "name": "user_ids",
+                "value": "1826426202886377472,1826444321675677696",
+                "type": "query",
+                "description": "用户id集合"
+              }
+            ]
+          },
+          "docs": "获取考试人员信息列表"
+        },
+        {
+          "info": {
+            "name": "考试任务变更人员（新）",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/new_exams/:exam-id/change_user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "考试任务变更人员"
+        },
+        {
+          "info": {
+            "name": "获取考试任务列表(即将废弃)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/exams",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "exam_type",
+                "value": "",
+                "type": "query",
+                "description": "任务类型（total, un_start, on_going, end）"
+              },
+              {
+                "name": "exam_title",
+                "value": "",
+                "type": "query",
+                "description": "任务名称"
+              },
+              {
+                "name": "begin_time",
+                "value": "2020-08-15",
+                "type": "query",
+                "description": "开始时间"
+              },
+              {
+                "name": "end_time",
+                "value": "2020-08-18",
+                "type": "query",
+                "description": "结束时间"
+              }
+            ]
+          },
+          "docs": "获取考试任务列表信息"
+        },
+        {
+          "info": {
+            "name": "获取考试任务监控信息(即将废弃)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/exams/:exam-id",
+            "params": [
+              {
+                "name": "exam_status",
+                "value": "",
+                "type": "query",
+                "description": "人员考试状态"
+              },
+              {
+                "name": "search_name",
+                "value": "",
+                "type": "query",
+                "description": "通过人员姓名筛选任务结果"
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              }
+            ]
+          },
+          "docs": "获取考试任务监控信息(即将废弃)"
+        },
+        {
+          "info": {
+            "name": "获取讲师信息",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/lecturers",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "lecturer_name",
+                "value": "",
+                "type": "query",
+                "description": "讲师姓名"
+              }
+            ]
+          },
+          "docs": "获取讲师信息"
+        },
+        {
+          "info": {
+            "name": "获取证书列表",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/get_certificate_list",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "keyword",
+                "value": "",
+                "type": "query",
+                "description": "证书名称搜索"
+              },
+              {
+                "name": "status",
+                "value": "1：启用,0：停用",
+                "type": "query",
+                "description": "证书状态"
+              }
+            ]
+          },
+          "docs": "获取企业证书列表"
+        },
+        {
+          "info": {
+            "name": "获取证书排行榜",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/get_certificate_rank",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              }
+            ]
+          },
+          "docs": "获取企业证书排行榜"
+        },
+        {
+          "info": {
+            "name": "获取某人证书详情",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/users/:user-id/certificate",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              }
+            ]
+          },
+          "docs": "获取某人证书详情"
+        },
+        {
+          "info": {
+            "name": "获取企业用户证书列表",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/get_certificate_user_list",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "分页的页码，取值为1，2，3..."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "分页大小，表示每页返回的记录数量"
+              },
+              {
+                "name": "begin_time",
+                "value": "2021-06-05",
+                "type": "query",
+                "description": "开始时间"
+              },
+              {
+                "name": "end_time",
+                "value": "2021-06-07",
+                "type": "query",
+                "description": "结束时间"
+              }
+            ]
+          },
+          "docs": "获取企业用户证书列表"
+        },
+        {
+          "info": {
+            "name": "获取访问接口所需的access_token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://openapi.coolcollege.cn/api/v2/:enterprise-id/get_access_token",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "apiKey"
+              },
+              {
+                "name": "api_secret",
+                "value": "",
+                "type": "query",
+                "description": "apiSecret"
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query",
+                "description": "13位时间戳, 精确到毫秒"
+              },
+              {
+                "name": "signature",
+                "value": "",
+                "type": "query",
+                "description": "以timestamp 和 ```\\n``` 和 apiKey签名字符串，apiSecret为签名密钥，使用算法HmacSHA256计算的签名值。注意：计算出签名以后，需要进行urlencode，才能把签名参数拼接到url中"
+              }
+            ]
+          },
+          "docs": "获取访问接口所需的access_token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
