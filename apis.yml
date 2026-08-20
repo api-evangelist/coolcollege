@@ -37,6 +37,15 @@ tags:
 - E-Learning
 - Talent Development
 - Human Resources
+- Software-as-a-Service
+- Learning Management
+- China
+tags_raw:
+- Company
+- Corporate Training
+- E-Learning
+- Talent Development
+- Human Resources
 - SaaS
 - Learning Management
 - China
@@ -51,7 +60,8 @@ apis:
     * 学习的```{plan-id}```可以通过获取学习任务列表的API得到
   humanURL: https://open.coolcollege.cn/
   baseURL: https://openapi.coolcollege.cn/api/v2
-  tags:
+  tags: []
+  tags_raw:
   - 学习
   properties:
   - type: OpenAPI
@@ -62,6 +72,8 @@ apis:
   humanURL: https://open.coolcollege.cn/
   baseURL: https://openapi.coolcollege.cn/api/v2
   tags:
+  - Pet
+  tags_raw:
   - pet
   properties:
   - type: OpenAPI
