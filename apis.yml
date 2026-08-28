@@ -8,6 +8,18 @@ description: >-
   into DingTalk, Feishu, and WeChat Work. Its Open API (v2) lets integrators sync organization data
   (users, departments, positions) and read learning, exam, certificate, credit, and archive data for
   an enterprise tenant, authenticated via an HMAC-SHA256 signature exchange that issues an access_token.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
