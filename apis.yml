@@ -84,7 +84,7 @@ apis:
   humanURL: https://open.coolcollege.cn/
   baseURL: https://openapi.coolcollege.cn/api/v2
   tags:
-  - pet
+  - Pet
   tags_raw:
   - pet
   properties:
