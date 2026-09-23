@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: 酷学院 REST 学习 API
   description: 欢迎使用酷学院开放平台Open API 服务
@@ -16,9 +16,7 @@ tags:
 
     * ```{enterprise-id}```可在系统内获取
 
-    * 学习的```{plan-id}```可以通过获取学习任务列表的API得到
-
-    '
+    * 学习的```{plan-id}```可以通过获取学习任务列表的API得到'
 paths:
   /{enterprise-id}/plans:
     get:
@@ -120,6 +118,8 @@ paths:
                                 type: string
                                 description: 监督人ID
                                 example: '1789888713963212800'
+      operationId: getByEnterpriseIdPlans
+      x-operation-id-source: derived
   /{enterprise-id}/plans/{plan-id}:
     get:
       tags:
@@ -418,12 +418,13 @@ paths:
                           type: string
                           description: 监督人ID
                           example: '1789888713963212800'
+      operationId: getByEnterpriseIdPlansByPlanId
+      x-operation-id-source: derived
   /{enterprise-id}/study_project_list:
     get:
       tags:
       - 学习
       summary: 获取学习项目信息
-      description: 获取学习项目信息
       parameters:
       - name: page_number
         in: query
@@ -544,6 +545,8 @@ paths:
                                 type: array
                                 description: 标签名称
                                 example: 管理岗
+      operationId: getByEnterpriseIdStudyProjectList
+      x-operation-id-source: derived
   /{enterprise-id}/users/{user-id}/score:
     get:
       tags:
@@ -583,6 +586,8 @@ paths:
                         type: string
                         description: 总学分
                         example: '12'
+      operationId: getByEnterpriseIdUsersByUserIdScore
+      x-operation-id-source: derived
   /{enterprise-id}/operations/{approval-id}/approval:
     get:
       tags:
@@ -660,12 +665,13 @@ paths:
                               type: string
                               description: 实操提交内容
                               example: 学员实操内容
+      operationId: getByEnterpriseIdOperationsByApprovalIdApproval
+      x-operation-id-source: derived
   /{enterprise-id}/archives:
     get:
       tags:
       - 学习
       summary: 获取员工档案信息
-      description: 获取员工档案信息
       parameters:
       - name: page_number
         in: query
@@ -819,12 +825,13 @@ paths:
                               type: number
                               description: 考试缺考个数
                               example: 12
+      operationId: getByEnterpriseIdArchives
+      x-operation-id-source: derived
   /{enterprise-id}/get_userId_appId_list/query:
     post:
       tags:
       - 学习
       summary: 根据酷学院用户id查询app用户id
-      description: 根据酷学院用户id查询app用户id
       requestBody:
         description: 请求消息体
         content:
@@ -855,12 +862,13 @@ paths:
                       user_id_app_user_id_map:
                         type: map
                         description: 酷学院用户id和钉钉用户id的映射
+      operationId: postByEnterpriseIdGetUserIdAppIdListQuery
+      x-operation-id-source: derived
   /{enterprise-id}/get_appId_userId_list/query:
     post:
       tags:
       - 学习
       summary: 根据app用户id查询酷学院用户id
-      description: 根据app用户id查询酷学院用户id
       requestBody:
         description: 请求消息体
         content:
@@ -891,12 +899,13 @@ paths:
                       app_user_id_user_id_map:
                         type: map
                         description: 钉钉/OA用户id和酷学院用户id和的映射
+      operationId: postByEnterpriseIdGetAppIdUserIdListQuery
+      x-operation-id-source: derived
   /{enterprise-id}/users:
     get:
       tags:
       - 学习
       summary: 根据用户名搜索用户
-      description: 根据用户名搜索用户
       parameters:
       - name: name
         in: query
@@ -940,6 +949,8 @@ paths:
                               type: string
                               description: 用户名
                               example: 张三
+      operationId: getByEnterpriseIdUsers
+      x-operation-id-source: derived
   /{enterprise-id}/new_exams:
     get:
       tags:
@@ -1096,6 +1107,8 @@ paths:
                               type: string
                               description: 创建时间（13位时间戳）
                               example: '1584857523000'
+      operationId: getByEnterpriseIdNewExams
+      x-operation-id-source: derived
   /{enterprise-id}/new_exams/{exam-id}:
     get:
       tags:
@@ -1297,6 +1310,8 @@ paths:
                                   type: string
                                   description: 指派人名称
                                   example: 阿Q
+      operationId: getByEnterpriseIdNewExamsByExamId
+      x-operation-id-source: derived
   /{enterprise-id}/new_exams/{exam-id}/change_user:
     post:
       tags:
@@ -1327,6 +1342,8 @@ paths:
                     description: 错误信息
                     example: success
                   data: {}
+      operationId: postByEnterpriseIdNewExamsByExamIdChangeUser
+      x-operation-id-source: derived
   /{enterprise-id}/exams:
     get:
       tags:
@@ -1476,6 +1493,8 @@ paths:
                                 type: string
                                 description: 监督人ID
                                 example: '1789888713963212800'
+      operationId: getByEnterpriseIdExams
+      x-operation-id-source: derived
   /{enterprise-id}/exams/{exam-id}:
     get:
       tags:
@@ -1642,7 +1661,6 @@ paths:
       tags:
       - 学习
       summary: 获取讲师信息
-      description: 获取讲师信息
       parameters:
       - name: page_number
         in: query
@@ -1736,6 +1754,8 @@ paths:
                               type: string
                               description: 讲师状态（on, off）
                               example: 'on'
+      operationId: getByEnterpriseIdLecturers
+      x-operation-id-source: derived
   /{enterprise-id}/get_certificate_list:
     get:
       tags:
@@ -1841,6 +1861,8 @@ paths:
                               type: number
                               description: 证书有效期（月） 0：代表永久有效
                               example: '8'
+      operationId: getByEnterpriseIdGetCertificateList
+      x-operation-id-source: derived
   /{enterprise-id}/get_certificate_rank:
     get:
       tags:
@@ -1927,12 +1949,13 @@ paths:
                               type: number
                               description: 已获得证书个数
                               example: '8'
+      operationId: getByEnterpriseIdGetCertificateRank
+      x-operation-id-source: derived
   /{enterprise-id}/users/{user-id}/certificate:
     get:
       tags:
       - 学习
       summary: 获取某人证书详情
-      description: 获取某人证书详情
       parameters:
       - name: page_number
         in: query
@@ -2025,12 +2048,13 @@ paths:
                               type: string
                               description: 证书图片
                               example: http://oss.coolcollege.cn/user-resource/staging/certs/2112123156500b4e84252-d72d-4d81-8b51-98baea569d08.png
+      operationId: getByEnterpriseIdUsersByUserIdCertificate
+      x-operation-id-source: derived
   /{enterprise-id}/get_certificate_user_list:
     get:
       tags:
       - 学习
       summary: 获取企业用户证书列表
-      description: 获取企业用户证书列表
       parameters:
       - name: page_number
         in: query
@@ -2137,12 +2161,13 @@ paths:
                               type: string
                               description: 证书图片链接
                               example: http://oss.coolcollege.cn/user-resource/staging/certs/2112123156500b4e84252-d72d-4d81-8b51-98baea569d08.png
+      operationId: getByEnterpriseIdGetCertificateUserList
+      x-operation-id-source: derived
   /{enterprise-id}/get_access_token:
     get:
       tags:
       - 学习
       summary: 获取访问接口所需的access_token
-      description: 获取访问接口所需的access_token
       parameters:
       - name: api_key
         in: query
@@ -2206,6 +2231,8 @@ paths:
                         type: string
                         description: 有效期时长,单位是秒
                         example: '14400'
+      operationId: getByEnterpriseIdGetAccessToken
+      x-operation-id-source: derived
 components:
   schemas:
     GetAppIdReqBody:
@@ -2216,6 +2243,18 @@ components:
           format: string
       xml:
         name: GetAppIdReqBody
+    GetApiUserIdReqBody:
+      type: object
+      properties:
+        user_ids:
+          type: array
+          format: int64
+        app_type:
+          type: string
+          enum:
+          - e_app
+      xml:
+        name: GetApiUserIdReqBody
     ExamChangeUserReqBody:
       type: object
       properties:
@@ -2261,18 +2300,6 @@ components:
           - 2
       xml:
         name: ExamChangeUserReqBody
-    GetApiUserIdReqBody:
-      type: object
-      properties:
-        user_ids:
-          type: array
-          format: int64
-        app_type:
-          type: string
-          enum:
-          - e_app
-      xml:
-        name: GetApiUserIdReqBody
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io

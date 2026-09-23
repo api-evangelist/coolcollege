@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: 酷学院 REST 学习 thirdoa API
+  title: 酷学院 REST Thirdoa API
   description: 欢迎使用酷学院开放平台Open API 服务
   contact:
     email: service@coolcollege.cn
@@ -16,22 +16,19 @@ tags:
 
     * 访问该目录下接口时header中需要携带参数 `access-token` 和 `enterprise-id`
 
-    * access-token 参数来自鉴权接口返回的token值
-
-    '
+    * access-token 参数来自鉴权接口返回的token值'
 paths:
   /event/dept:
     post:
       tags:
       - thirdoa
       summary: 部门信息同步
-      description: 部门信息同步
       requestBody:
         description: deptData
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/部门信息推送'
+              $ref: '#/components/schemas/Component_8'
         required: true
       responses:
         '200':
@@ -53,18 +50,19 @@ paths:
                     type: object
                     description: 返回的数据
                     example: null
+      operationId: postEventDept
+      x-operation-id-source: derived
   /event/post:
     post:
       tags:
       - thirdoa
       summary: 岗位信息同步
-      description: 岗位信息同步
       requestBody:
         description: postData
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/岗位信息推送'
+              $ref: '#/components/schemas/Component_5'
         required: true
       responses:
         '200':
@@ -86,18 +84,19 @@ paths:
                     type: object
                     description: 返回的数据
                     example: null
+      operationId: postEventPost
+      x-operation-id-source: derived
   /event/study_project_user:
     post:
       tags:
       - thirdoa
       summary: 学习项目报名人员同步
-      description: 学习项目报名人员同步
       requestBody:
         description: projectUserVo
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/第三方 学习项目报名学习信息'
+              $ref: '#/components/schemas/Component_6'
         required: true
       '200':
         description: OK
@@ -118,18 +117,19 @@ paths:
                   type: object
                   description: 返回的数据
                   example: null
+      operationId: postEventStudyProjectUser
+      x-operation-id-source: derived
   /event/user:
     post:
       tags:
       - thirdoa
       summary: 人员信息同步
-      description: 人员信息同步
       requestBody:
         description: userData
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/人员信息推送'
+              $ref: '#/components/schemas/Component_3'
         required: true
       responses:
         '200':
@@ -151,64 +151,11 @@ paths:
                     type: object
                     description: 返回的数据
                     example: null
+      operationId: postEventUser
+      x-operation-id-source: derived
 components:
   schemas:
-    岗位信息:
-      type: object
-      required:
-      - is_delete
-      - post_id
-      - post_name
-      properties:
-        create_time:
-          type: integer
-          format: int64
-          description: 创建时间 13位时间戳
-          allowEmptyValue: false
-        is_delete:
-          type: integer
-          format: int32
-          description: 删除状态; 1:删除，0:未删除
-          allowEmptyValue: false
-          enum:
-          - 1
-          - 0
-        last_update_time:
-          type: integer
-          format: int64
-          description: 最后更新时间 13位时间戳
-          allowEmptyValue: false
-        post_id:
-          type: string
-          description: 岗位ID
-          allowEmptyValue: false
-        post_name:
-          type: string
-          description: 岗位名称
-          allowEmptyValue: false
-        post_order:
-          type: integer
-          format: int32
-          description: 次序值
-          allowEmptyValue: false
-      title: 岗位信息
-    岗位信息推送:
-      type: object
-      properties:
-        data:
-          type: array
-          description: 岗位数据
-          allowEmptyValue: false
-          items:
-            $ref: '#/components/schemas/岗位信息'
-        data_count:
-          type: integer
-          format: int32
-          description: 推送数量
-          allowEmptyValue: false
-      title: 岗位信息推送
-      description: 部门信息变动信息批量推送
-    第三方 学习项目报名学习信息:
+    Component_6:
       type: object
       required:
       - project_id
@@ -224,7 +171,7 @@ components:
           items:
             type: string
       title: 第三方 学习项目报名学习信息
-    部门信息:
+    Component_7:
       type: object
       required:
       - id
@@ -267,7 +214,78 @@ components:
           description: 父部门id
           allowEmptyValue: false
       title: 部门信息
-    人员信息扩展属性:
+    Component_4:
+      type: object
+      required:
+      - is_delete
+      - post_id
+      - post_name
+      properties:
+        create_time:
+          type: integer
+          format: int64
+          description: 创建时间 13位时间戳
+          allowEmptyValue: false
+        is_delete:
+          type: integer
+          format: int32
+          description: 删除状态; 1:删除，0:未删除
+          allowEmptyValue: false
+          enum:
+          - 1
+          - 0
+        last_update_time:
+          type: integer
+          format: int64
+          description: 最后更新时间 13位时间戳
+          allowEmptyValue: false
+        post_id:
+          type: string
+          description: 岗位ID
+          allowEmptyValue: false
+        post_name:
+          type: string
+          description: 岗位名称
+          allowEmptyValue: false
+        post_order:
+          type: integer
+          format: int32
+          description: 次序值
+          allowEmptyValue: false
+      title: 岗位信息
+    Component_8:
+      type: object
+      properties:
+        data:
+          type: array
+          description: 部门数据
+          allowEmptyValue: false
+          items:
+            $ref: '#/components/schemas/Component_7'
+        data_count:
+          type: integer
+          format: int32
+          description: 推送数量
+          allowEmptyValue: false
+      title: 部门信息推送
+      description: 部门信息变动信息批量推送
+    Component_3:
+      type: object
+      properties:
+        data:
+          type: array
+          description: 人员数据
+          allowEmptyValue: false
+          items:
+            $ref: '#/components/schemas/Component'
+        data_count:
+          type: integer
+          format: int32
+          description: 人员推送数量
+          allowEmptyValue: false
+      title: 人员信息推送
+      description: 人员信息变动信息批量推送
+    Component_2:
       type: object
       properties:
         column_name:
@@ -285,39 +303,7 @@ components:
           allowEmptyValue: true
       title: 人员信息扩展属性
       description: 人员信息扩展属性 最多五个
-    人员信息推送:
-      type: object
-      properties:
-        data:
-          type: array
-          description: 人员数据
-          allowEmptyValue: false
-          items:
-            $ref: '#/components/schemas/人员信息'
-        data_count:
-          type: integer
-          format: int32
-          description: 人员推送数量
-          allowEmptyValue: false
-      title: 人员信息推送
-      description: 人员信息变动信息批量推送
-    部门信息推送:
-      type: object
-      properties:
-        data:
-          type: array
-          description: 部门数据
-          allowEmptyValue: false
-          items:
-            $ref: '#/components/schemas/部门信息'
-        data_count:
-          type: integer
-          format: int32
-          description: 推送数量
-          allowEmptyValue: false
-      title: 部门信息推送
-      description: 部门信息变动信息批量推送
-    人员信息:
+    Component:
       type: object
       required:
       - department_ids
@@ -356,7 +342,7 @@ components:
           description: 扩展属性
           allowEmptyValue: false
           items:
-            $ref: '#/components/schemas/人员信息扩展属性'
+            $ref: '#/components/schemas/Component_2'
         is_admin:
           type: boolean
           example: false
@@ -404,6 +390,22 @@ components:
           description: 用户名称
           allowEmptyValue: false
       title: 人员信息
+    Component_5:
+      type: object
+      properties:
+        data:
+          type: array
+          description: 岗位数据
+          allowEmptyValue: false
+          items:
+            $ref: '#/components/schemas/Component_4'
+        data_count:
+          type: integer
+          format: int32
+          description: 推送数量
+          allowEmptyValue: false
+      title: 岗位信息推送
+      description: 部门信息变动信息批量推送
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io

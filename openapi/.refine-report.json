@@ -1,18 +1,26 @@
 {
   "provider": "coolcollege",
   "sources": [
-    "coolcollege-default-api-openapi.yml",
-    "coolcollege-pet-api-openapi.yml",
-    "coolcollege-thirdoa-api-openapi.yml"
+    "_original/coolcollege-openapi-original.json"
   ],
   "outputs": [
-    "coolcollege-default-api-openapi.yml",
     "coolcollege-pet-api-openapi.yml",
-    "coolcollege-thirdoa-api-openapi.yml"
+    "coolcollege-thirdoa-api-openapi.yml",
+    "coolcollege-default-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "coolcollege-openapi-original.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0; renamed 8 component key(s) illegal in 3.x (e.g. \u4eba\u5458\u4fe1\u606f)",
+    "coolcollege-openapi-original.json: declared missing tag: \u5b66\u5206",
+    "coolcollege-openapi-original.json: declared missing tag: \u8bc1\u4e66",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "coolcollege-default-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "coolcollege-pet-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "coolcollege-thirdoa-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
