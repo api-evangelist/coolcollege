@@ -43,6 +43,9 @@ x-tier-reason: live-open-api-harvested
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-18'
+x-docs-platform: redoc
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-24
 tags:
 - Company
 - Corporate Training
@@ -79,7 +82,7 @@ apis:
   - type: OpenAPI
     url: openapi/coolcollege-default-api-openapi.yml
 - aid: coolcollege:coolcollege-pet-api
-  name: 酷学院 (Cool College) pet API
+  name: "\u9177\u5B66\u9662 (Cool College) pet API"
   description: Everything about your Pets
   humanURL: https://open.coolcollege.cn/
   baseURL: https://openapi.coolcollege.cn/api/v2
@@ -91,7 +94,7 @@ apis:
   - type: OpenAPI
     url: openapi/coolcollege-pet-api-openapi.yml
 - aid: coolcollege:coolcollege-thirdoa-api
-  name: 酷学院 (Cool College) thirdoa API
+  name: "\u9177\u5B66\u9662 (Cool College) thirdoa API"
   description: >-
     * OA系统 人员/部门变动事件推送API
 
