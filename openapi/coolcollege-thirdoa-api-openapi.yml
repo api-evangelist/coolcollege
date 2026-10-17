@@ -155,6 +155,122 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Component_7:
+      type: object
+      required:
+      - id
+      - is_delete
+      - name
+      properties:
+        create_time:
+          type: integer
+          format: int64
+          description: 创建时间 13位时间戳
+          allowEmptyValue: false
+        depart_order:
+          type: integer
+          format: int32
+          description: 在父部门中的次序值
+          allowEmptyValue: false
+        id:
+          type: string
+          description: 部门ID
+          allowEmptyValue: false
+        is_delete:
+          type: integer
+          format: int32
+          description: 删除状态; 1:删除，0:未删除
+          allowEmptyValue: false
+          enum:
+          - 1
+          - 0
+        last_update_time:
+          type: integer
+          format: int64
+          description: 最后更新时间 13位时间戳
+          allowEmptyValue: false
+        name:
+          type: string
+          description: 部门名称
+          allowEmptyValue: false
+        parent_id:
+          type: string
+          description: 父部门id
+          allowEmptyValue: false
+      title: 部门信息
+    Component_2:
+      type: object
+      properties:
+        column_name:
+          type: string
+          description: 属性名称
+          allowEmptyValue: false
+        column_order:
+          type: integer
+          format: int32
+          description: 属性顺序值
+          allowEmptyValue: false
+        column_value:
+          type: string
+          description: 属性值
+          allowEmptyValue: true
+      title: 人员信息扩展属性
+      description: 人员信息扩展属性 最多五个
+    Component_4:
+      type: object
+      required:
+      - is_delete
+      - post_id
+      - post_name
+      properties:
+        create_time:
+          type: integer
+          format: int64
+          description: 创建时间 13位时间戳
+          allowEmptyValue: false
+        is_delete:
+          type: integer
+          format: int32
+          description: 删除状态; 1:删除，0:未删除
+          allowEmptyValue: false
+          enum:
+          - 1
+          - 0
+        last_update_time:
+          type: integer
+          format: int64
+          description: 最后更新时间 13位时间戳
+          allowEmptyValue: false
+        post_id:
+          type: string
+          description: 岗位ID
+          allowEmptyValue: false
+        post_name:
+          type: string
+          description: 岗位名称
+          allowEmptyValue: false
+        post_order:
+          type: integer
+          format: int32
+          description: 次序值
+          allowEmptyValue: false
+      title: 岗位信息
+    Component_8:
+      type: object
+      properties:
+        data:
+          type: array
+          description: 部门数据
+          allowEmptyValue: false
+          items:
+            $ref: '#/components/schemas/Component_7'
+        data_count:
+          type: integer
+          format: int32
+          description: 推送数量
+          allowEmptyValue: false
+      title: 部门信息推送
+      description: 部门信息变动信息批量推送
     Component:
       type: object
       required:
@@ -242,154 +358,6 @@ components:
           description: 用户名称
           allowEmptyValue: false
       title: 人员信息
-    Component_5:
-      type: object
-      properties:
-        data:
-          type: array
-          description: 岗位数据
-          allowEmptyValue: false
-          items:
-            $ref: '#/components/schemas/Component_4'
-        data_count:
-          type: integer
-          format: int32
-          description: 推送数量
-          allowEmptyValue: false
-      title: 岗位信息推送
-      description: 部门信息变动信息批量推送
-    Component_3:
-      type: object
-      properties:
-        data:
-          type: array
-          description: 人员数据
-          allowEmptyValue: false
-          items:
-            $ref: '#/components/schemas/Component'
-        data_count:
-          type: integer
-          format: int32
-          description: 人员推送数量
-          allowEmptyValue: false
-      title: 人员信息推送
-      description: 人员信息变动信息批量推送
-    Component_7:
-      type: object
-      required:
-      - id
-      - is_delete
-      - name
-      properties:
-        create_time:
-          type: integer
-          format: int64
-          description: 创建时间 13位时间戳
-          allowEmptyValue: false
-        depart_order:
-          type: integer
-          format: int32
-          description: 在父部门中的次序值
-          allowEmptyValue: false
-        id:
-          type: string
-          description: 部门ID
-          allowEmptyValue: false
-        is_delete:
-          type: integer
-          format: int32
-          description: 删除状态; 1:删除，0:未删除
-          allowEmptyValue: false
-          enum:
-          - 1
-          - 0
-        last_update_time:
-          type: integer
-          format: int64
-          description: 最后更新时间 13位时间戳
-          allowEmptyValue: false
-        name:
-          type: string
-          description: 部门名称
-          allowEmptyValue: false
-        parent_id:
-          type: string
-          description: 父部门id
-          allowEmptyValue: false
-      title: 部门信息
-    Component_4:
-      type: object
-      required:
-      - is_delete
-      - post_id
-      - post_name
-      properties:
-        create_time:
-          type: integer
-          format: int64
-          description: 创建时间 13位时间戳
-          allowEmptyValue: false
-        is_delete:
-          type: integer
-          format: int32
-          description: 删除状态; 1:删除，0:未删除
-          allowEmptyValue: false
-          enum:
-          - 1
-          - 0
-        last_update_time:
-          type: integer
-          format: int64
-          description: 最后更新时间 13位时间戳
-          allowEmptyValue: false
-        post_id:
-          type: string
-          description: 岗位ID
-          allowEmptyValue: false
-        post_name:
-          type: string
-          description: 岗位名称
-          allowEmptyValue: false
-        post_order:
-          type: integer
-          format: int32
-          description: 次序值
-          allowEmptyValue: false
-      title: 岗位信息
-    Component_2:
-      type: object
-      properties:
-        column_name:
-          type: string
-          description: 属性名称
-          allowEmptyValue: false
-        column_order:
-          type: integer
-          format: int32
-          description: 属性顺序值
-          allowEmptyValue: false
-        column_value:
-          type: string
-          description: 属性值
-          allowEmptyValue: true
-      title: 人员信息扩展属性
-      description: 人员信息扩展属性 最多五个
-    Component_8:
-      type: object
-      properties:
-        data:
-          type: array
-          description: 部门数据
-          allowEmptyValue: false
-          items:
-            $ref: '#/components/schemas/Component_7'
-        data_count:
-          type: integer
-          format: int32
-          description: 推送数量
-          allowEmptyValue: false
-      title: 部门信息推送
-      description: 部门信息变动信息批量推送
     Component_6:
       type: object
       required:
@@ -406,6 +374,38 @@ components:
           items:
             type: string
       title: 第三方 学习项目报名学习信息
+    Component_3:
+      type: object
+      properties:
+        data:
+          type: array
+          description: 人员数据
+          allowEmptyValue: false
+          items:
+            $ref: '#/components/schemas/Component'
+        data_count:
+          type: integer
+          format: int32
+          description: 人员推送数量
+          allowEmptyValue: false
+      title: 人员信息推送
+      description: 人员信息变动信息批量推送
+    Component_5:
+      type: object
+      properties:
+        data:
+          type: array
+          description: 岗位数据
+          allowEmptyValue: false
+          items:
+            $ref: '#/components/schemas/Component_4'
+        data_count:
+          type: integer
+          format: int32
+          description: 推送数量
+          allowEmptyValue: false
+      title: 岗位信息推送
+      description: 部门信息变动信息批量推送
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io

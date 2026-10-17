@@ -2235,14 +2235,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    GetAppIdReqBody:
-      type: object
-      properties:
-        app_user_ids:
-          type: array
-          format: string
-      xml:
-        name: GetAppIdReqBody
     GetApiUserIdReqBody:
       type: object
       properties:
@@ -2255,6 +2247,14 @@ components:
           - e_app
       xml:
         name: GetApiUserIdReqBody
+    GetAppIdReqBody:
+      type: object
+      properties:
+        app_user_ids:
+          type: array
+          format: string
+      xml:
+        name: GetAppIdReqBody
     ExamChangeUserReqBody:
       type: object
       properties:
