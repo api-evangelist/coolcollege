@@ -1,4 +1,4 @@
-# coolcollege
+# 酷学院 (Cool College)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,6 +64,120 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-coolcollege is a company surfaced as a portfolio company of qiming and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+酷学院 (Cool College) is an enterprise training and talent-development SaaS platform operated by 酷渲（北京）科技发展有限公司 (Cool Render (Beijing) Technology Co., Ltd.), founded in 2017 and acquired by Beisen in 2025. It provides AI-assisted corporate e-learning — course libraries, learning tasks, learning projects, exams, certificates, credits, and instructor management — with deep integration into DingTalk, Feishu, and WeChat Work. Its Open API (v2) lets integrators sync organization data (users, departments, positions) and read learning, exam, certificate, credit, and archive data for an enterprise tenant, authenticated via an HMAC-SHA256 signature exchange that issues an access_token.
 
-Backed by: qiming — https://coolcollege.cn
+**Areas:** Company · Corporate Training · E-Learning · Talent Development · Human Resources · Software-as-a-Service · LMS · China
+
+## 酷学院 (Cool College) on APIs.io
+
+Everything profiled for 酷学院 (Cool College) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/coolcollege/](https://apis.io/providers/coolcollege/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [酷学院 (Cool College) 学习 API](https://apis.io/apis/coolcollege/coolcollege-default-api/) — * 访问学习相关的操作以及数据 * ```{enterprise-id}```可在系统内获取 * 学习的```{plan-id}```可以通过获取学习任务列表的API得到
+- [酷学院 (Cool College) pet API](https://apis.io/apis/coolcollege/coolcollege-pet-api/) — Everything about your Pets
+- [酷学院 (Cool College) thirdoa API](https://apis.io/apis/coolcollege/coolcollege-thirdoa-api/) — * OA系统 人员/部门变动事件推送API * 访问该目录下接口时header中需要携带参数 `access-token` 和 `enterprise-id` * access-token 参数来自鉴权接口返回的token值
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [coolcollege](https://apis.io/servers/coolcollege/coolcollege/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Coolcollege Agentic Access](https://apis.io/agentic-access/coolcollege/coolcollege-agentic-access/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [酷学院 REST 学习 API](https://apis.io/collections/coolcollege/open-coolcollege-default-api/)
+- [酷学院 REST 学习 pet API](https://apis.io/collections/coolcollege/open-coolcollege-pet-api/)
+- [酷学院 REST 学习 thirdoa API](https://apis.io/collections/coolcollege/open-coolcollege-thirdoa-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Coolcollege Openapi Overlay](https://apis.io/overlays/coolcollege/coolcollege-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Coolcollege Authentication](https://apis.io/security/coolcollege/coolcollege-authentication/)
+- [Coolcollege Domain Security](https://apis.io/security/coolcollege/coolcollege-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.coolcollege.com)
+- [Documentation](https://help.coolcollege.cn/)
+- [API reference](https://open.coolcollege.cn/)
+- [Sign up](https://www.coolcollege.com/freeTrial.html)
+- [Support](https://help.coolcollege.cn/)
+- [Blog](https://www.coolcollege.com/originalnews)
+- [Terms of service](https://www.coolcollege.com/service.html)
+- [Privacy policy](https://www.coolcollege.com/wp-content/uploads/2025/04/酷学院平台隐私政策-2025.pdf)
+- [Status](https://status.coolcollege.cn/)
+
+## API Evangelist rating
+
+**Kin Score 32.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 38.8 |
+| Contract governance | 4.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 38.7 |
+| Access clarity | 28.9 |
+
+**Agent readiness 23.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.5** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/coolcollege/](https://apis.io/providers/coolcollege/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for 酷学院 (Cool College): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/coolcollege/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
